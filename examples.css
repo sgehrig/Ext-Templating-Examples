@@ -11,6 +11,14 @@ ul {
 	margin: 0px 0px 0px 35px;
 }
 
+strong, b {
+	font-weight: bold;
+}
+
+em, i {
+	font-style: italic;
+}
+
 /**
  * example9.html
  */
