@@ -1,0 +1,16 @@
+/**
+ * general styles - mostly to reset ExtJS all.css resets
+ */
+ol {
+	list-style-type: decimal;
+	margin: 0px 0px 0px 35px;
+}
+
+ul {
+	list-style-type: disc;
+	margin: 0px 0px 0px 35px;
+}
+
+/**
+ * example9.html
+ */
