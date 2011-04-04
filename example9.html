@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic</title>
+		<title>ExtJS Templating Magic [Example 9]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -19,10 +19,10 @@ Ext.onReady(function() {
 			{ name: 'gravatar', type: 'string', mapping: 4 }
 		],
 		data: [
-			[1, 'john', 'Johnny', 'john@example.com', '…'],
-			[2, 'jack', null, 'jack@example.com', '…'],
-			[3, 'jane', 'LA69', 'jane@example.com', '…'],
-			[4, 'jim', 'Jimmy', 'jim@example.com', '…']
+			[1, 'john', 'Johnny', 'john@example.com', 'd4c74594d841139328695756648b6bd6'],
+			[2, 'jack', null, 'jack@example.com', 'ee5770a649fccbde3e448d90591673ca'],
+			[3, 'jane', 'LA69', 'jane@example.com', '9e26471d35a78862c17e467d87cddedf'],
+			[4, 'jim', 'Jimmy', 'jim@example.com', 'db40f846ab0a3b10522f83c6ae657e31']
 		]
 	});
 
@@ -36,13 +36,14 @@ Ext.onReady(function() {
 		valueField: 'id',
 		displayField: 'email',
 		listWidth: 300,
-		tpl: '<tpl for="."><div class="x-combo-list-item" style="overflow: auto;"><div style="margin-left: 55px; width: 200px;">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div><div style="float: left; width: 50px; height: 50px;"><img src="{gravatar}"/></div></div></tpl>'
+		tpl: '<tpl for="."><div class="x-combo-list-item"><div class="image"><img src="http://www.gravatar.com/avatar/{gravatar}?s=50&d=identicon"/></div><div class="name">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div></div></tpl>'
 	});
 	combo.render(Ext.getBody());
 });
     	</script>
 	</head>
 	<body id="example9">
+		<h1>ExtJS Templating Magic [Example 9]</h1>
 	</body>
 </html>
 

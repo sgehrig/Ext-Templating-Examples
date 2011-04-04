@@ -2,41 +2,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic</title>
+		<title>ExtJS Templating Magic [Example 8]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var order = {
-		number: 4711,
-		date: new Date(2011, 2, 29, 12, 0, 0),
-		status: 'shipped',
-		shippingAddress: {
-			address: '1 Sandy Way',
-		city: 'Tatooine',
-		state: 'Tatooine',
-			zip: '0815'
-		},
-		customer: {
-			firstName: 'Luke',
-			lastName: 'Skywalker',
-			email: 'luke@deathstar.com'
-		},
-		items: [{
-			id: 1,
-			name: 'Light saber',
-			quantity: 5,
-			unitPrice: 100.5
-		}, {
-			id: 2,
-			name: 'C3PO',
-			quantity: 1,
-			unitPrice: 95450.75
-		}]
-	};
-
 	var order = {
 		number: 4711,
 		date: new Date(2011, 2, 29, 12, 0, 0),
@@ -120,18 +92,16 @@ Ext.onReady(function() {
 		}
 	});
 
-	var win = new Ext.Window({
-		width: 300,
-		height: 200,
-		autoScroll: true,
+	var panel = new Ext.Panel({
 		title: "Purchase order",
 		tpl: template,
 		data: order
 	});
-	win.show();
+	panel.render(Ext.getBody());
 });
     	</script>
 	</head>
 	<body id="example8">
+		<h1>ExtJS Templating Magic [Example 8]</h1>
 	</body>
 </html>

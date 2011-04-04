@@ -14,3 +14,57 @@ ul {
 /**
  * example9.html
  */
+#example9 .x-combo-list-item {
+	overflow: hidden;
+}
+
+#example9 .x-combo-list-item .image {
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+
+#example9 .x-combo-list-item .name {
+	margin-left: 55px;
+	width: 200px;
+}
+
+/**
+ * example10.html
+ */
+#example10 .group {
+	clear: both;
+	overflow: auto;
+}
+
+#example10 .item {
+	float: left;
+	width: 145px;
+	height: 145px;
+	border: 1px solid black;
+	margin: 10px;
+	cursor: pointer;
+}
+
+#example10 .item div {
+	text-align: center;
+}
+
+#example10 .item .image img {
+	width: 100px;
+	height: 100px;
+	margin: 2px;
+	border: 5px solid #dddddd;
+}
+
+#example10 .item .name {
+	font-size: 75%;
+}
+
+#example10 .item.item-over {
+	background-color: #eeeeee;
+}
+
+#example10 .item.item-selected {
+	border-color: #ff0000;
+}
