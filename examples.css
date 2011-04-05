@@ -76,3 +76,10 @@ em, i {
 #example10 .item.item-selected {
 	border-color: #ff0000;
 }
+
+/**
+ * example13.html
+ */
+#example13 .my-link-btn {
+	margin: 5px;
+}

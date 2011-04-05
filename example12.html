@@ -45,16 +45,16 @@ Ext.onReady(function() {
 			id: 'col-email'
 		}, {
 			header: 'Nickname',
+			xtype: 'templatecolumn',
 			tpl: '<tpl if="nick">{nick}</tpl><tpl if="!nick"><i>none</i></tpl>',
 			width: 160
 		}]
 	});
-	grid.render('grid');
+	grid.render(Ext.getBody());
 });
     	</script>
 	</head>
 	<body id="example12">
 		<h1>ExtJS Templating Magic [Example 12]</h1>
-		<div id="grid"></div>
 	</body>
 </html>

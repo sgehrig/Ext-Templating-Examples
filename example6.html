@@ -90,16 +90,10 @@ Ext.onReady(function() {
 		compiled: true,
 		addressTemplate: addressTemplate,
 		orderItemTemplate: orderItemTemplate,
-		grossPrice: function(price) {
-			return price * (1 + currentTax);
-		},
-		grossItem: function(item) {
-			return this.grossPrice(item.unitPrice) * item.quantity;
-		},
 		orderSum: function(order) {
 			var sum = 0;
 			Ext.each(order.items, function(item) {
-				sum += this.grossItem(item);
+				sum += (item.unitPrice * (1 + currentTax)) * item.quantity;
 			}, this);
 			return sum;
 		}

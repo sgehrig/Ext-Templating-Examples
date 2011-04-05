@@ -26,20 +26,21 @@ Ext.onReady(function() {
 		]
 	});
 
+	var columns = 3;
 	var template = new Ext.XTemplate(
 		'<tpl for=".">',
-		'{[this.groupStart(xindex, 3, \'<div class="group">\')]}',
+		'{[this.groupStart(xindex, \'<div class="group">\')]}',
 			'<div class="item">',
 				'<div class="image"><img src="http://www.gravatar.com/avatar/{gravatar}?s=100&d=identicon"/></div>',
 				'<div class="name">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div>',
 			'</div>',
-		'{[this.groupEnd(xindex, xcount, 3, "</div>")]}',
+		'{[this.groupEnd(xindex, xcount, "</div>")]}',
 		'</tpl>', {
-			groupStart: function(i, groupCount, str) {
-				return (i == 1 || i % groupCount == 1) ? str : '';
+			groupStart: function(i, str) {
+				return (i == 1 || i % columns == 1) ? str : '';
 			},
-			groupEnd: function(i, total, groupCount, str) {
-				return (i == total || i % groupCount == 0) ? str : '';
+			groupEnd: function(i, total, str) {
+				return (i == total || i % columns == 0) ? str : '';
 			}
 		}
 	);
