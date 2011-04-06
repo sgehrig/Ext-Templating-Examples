@@ -32,7 +32,7 @@ Ext.onReady(function() {
 	'<ul>',
 	'<tpl for=".">',
 		'<li><a href="/{id}">{name}</a>',
-		'<tpl if="values.children && values.children.length &gt; 1">',
+		'<tpl if="values.children && values.children.length &gt; 0">',
 			'{[this.renderMenu(values.children)]}',
 		'</tpl>',
 		'</li>',
