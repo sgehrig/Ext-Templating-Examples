@@ -1,0 +1,707 @@
+[
+	{
+		"id_str":"55395774162419712",
+		"text":"In related news: We\u2019re growing fast! Sencha expands rapidly as demand for HTML5 web apps fuels growth http:\/\/t.co\/JEOUQYV",
+		"entities":{
+			"hashtags":[
+
+			],
+			"urls":[
+				{
+					"display_url":"sencha.com\/x\/ac",
+					"indices":[
+						102,
+						121
+					],
+					"expanded_url":"http:\/\/sencha.com\/x\/ac",
+					"url":"http:\/\/t.co\/JEOUQYV"
+				}
+			],
+			"user_mentions":[
+
+			]
+		},
+		"place":null,
+		"truncated":false,
+		"source":"\u003Ca href=\"http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\" rel=\"nofollow\"\u003ETwitter for Mac\u003C\/a\u003E",
+		"created_at":"Tue Apr 05 22:25:56 +0000 2011",
+		"favorited":false,
+		"coordinates":null,
+		"in_reply_to_user_id":null,
+		"in_reply_to_screen_name":null,
+		"in_reply_to_status_id_str":null,
+		"geo":null,
+		"in_reply_to_status_id":null,
+		"contributors":null,
+		"user":{
+			"id_str":"14539337",
+			"show_all_inline_media":false,
+			"follow_request_sent":false,
+			"geo_enabled":true,
+			"profile_background_tile":true,
+			"location":"Palo Alto, CA",
+			"followers_count":7378,
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"default_profile":false,
+			"contributors_enabled":false,
+			"lang":"en",
+			"profile_link_color":"126399",
+			"is_translator":false,
+			"statuses_count":1060,
+			"profile_sidebar_border_color":"f2f2f2",
+			"listed_count":733,
+			"verified":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"profile_use_background_image":true,
+			"friends_count":205,
+			"profile_background_color":"ffffff",
+			"following":true,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"default_profile_image":false,
+			"name":"Sencha",
+			"notifications":false,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"utc_offset":-28800,
+			"favourites_count":44,
+			"profile_sidebar_fill_color":"ffffff"
+		},
+		"retweeted":false,
+		"id":55395774162419712,
+		"in_reply_to_user_id_str":null,
+		"retweet_count":0
+	},
+	{
+		"coordinates":null,
+		"in_reply_to_user_id":null,
+		"favorited":false,
+		"text":"Sorry for the intermittent issues on sencha.com this morning. We\u2019re working on it!",
+		"entities":{
+			"hashtags":[
+
+			],
+			"user_mentions":[
+
+			],
+			"urls":[
+
+			]
+		},
+		"geo":null,
+		"in_reply_to_screen_name":null,
+		"in_reply_to_status_id":null,
+		"in_reply_to_status_id_str":null,
+		"place":null,
+		"contributors":null,
+		"retweeted":false,
+		"source":"\u003Ca href=\"http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\" rel=\"nofollow\"\u003ETwitter for Mac\u003C\/a\u003E",
+		"created_at":"Tue Apr 05 22:24:04 +0000 2011",
+		"in_reply_to_user_id_str":null,
+		"id_str":"55395306292002816",
+		"retweet_count":0,
+		"user":{
+			"show_all_inline_media":false,
+			"geo_enabled":true,
+			"profile_background_color":"ffffff",
+			"location":"Palo Alto, CA",
+			"default_profile_image":false,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"lang":"en",
+			"statuses_count":1058,
+			"notifications":false,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"default_profile":false,
+			"follow_request_sent":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"profile_sidebar_fill_color":"ffffff",
+			"id_str":"14539337",
+			"profile_background_tile":true,
+			"favourites_count":44,
+			"followers_count":7368,
+			"is_translator":false,
+			"contributors_enabled":false,
+			"following":true,
+			"friends_count":205,
+			"profile_link_color":"126399",
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"listed_count":733,
+			"profile_sidebar_border_color":"f2f2f2",
+			"name":"Sencha",
+			"verified":false,
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"profile_use_background_image":true,
+			"utc_offset":-28800
+		},
+		"truncated":false,
+		"id":55395306292002816
+	},
+	{
+		"id_str":"55390265808125952",
+		"text":"@msims84 ;)",
+		"entities":{
+			"urls":[
+
+			],
+			"hashtags":[
+
+			],
+			"user_mentions":[
+				{
+					"id_str":"19800712",
+					"indices":[
+						0,
+						8
+					],
+					"name":"Mitchell Simoens",
+					"screen_name":"msims84",
+					"id":19800712
+				}
+			]
+		},
+		"place":{
+			"country":"United States",
+			"country_code":"US",
+			"bounding_box":{
+				"type":"Polygon",
+				"coordinates":[
+					[
+						[
+							-122.288383,
+							37.447637
+						],
+						[
+							-122.139775,
+							37.447637
+						],
+						[
+							-122.139775,
+							37.569534
+						],
+						[
+							-122.288383,
+							37.569534
+						]
+					]
+				]
+			},
+			"place_type":"city",
+			"attributes":{
+
+			},
+			"name":"Redwood City",
+			"full_name":"Redwood City, CA",
+			"id":"a409256339a7c6a1",
+			"url":"http:\/\/api.twitter.com\/1\/geo\/id\/a409256339a7c6a1.json"
+		},
+		"truncated":false,
+		"source":"\u003Ca href=\"http:\/\/twitter.com\/\" rel=\"nofollow\"\u003ETwitter for iPhone\u003C\/a\u003E",
+		"created_at":"Tue Apr 05 22:04:03 +0000 2011",
+		"favorited":false,
+		"coordinates":{
+			"type":"Point",
+			"coordinates":[
+				-122.20078006,
+				37.51100534
+			]
+		},
+		"in_reply_to_user_id":19800712,
+		"in_reply_to_screen_name":"msims84",
+		"in_reply_to_status_id_str":"55319604133756928",
+		"geo":{
+			"type":"Point",
+			"coordinates":[
+				37.51100534,
+				-122.20078006
+			]
+		},
+		"in_reply_to_status_id":55319604133756928,
+		"contributors":null,
+		"user":{
+			"id_str":"14539337",
+			"profile_background_tile":true,
+			"location":"Palo Alto, CA",
+			"followers_count":7383,
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"default_profile_image":false,
+			"lang":"en",
+			"profile_link_color":"126399",
+			"profile_sidebar_border_color":"f2f2f2",
+			"verified":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"follow_request_sent":false,
+			"profile_use_background_image":true,
+			"is_translator":false,
+			"show_all_inline_media":false,
+			"geo_enabled":true,
+			"profile_background_color":"ffffff",
+			"contributors_enabled":false,
+			"following":true,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"default_profile":false,
+			"friends_count":205,
+			"name":"Sencha",
+			"listed_count":734,
+			"statuses_count":1060,
+			"notifications":false,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"utc_offset":-28800,
+			"favourites_count":44,
+			"profile_sidebar_fill_color":"ffffff"
+		},
+		"retweeted":false,
+		"id":55390265808125952,
+		"in_reply_to_user_id_str":"19800712",
+		"retweet_count":0
+	},
+	{
+		"id_str":"55262216823382016",
+		"text":"@JoomFlix Also the same docs are in the SDK if you want to run it locally",
+		"entities":{
+			"urls":[
+
+			],
+			"hashtags":[
+
+			],
+			"user_mentions":[
+				{
+					"id_str":"21303502",
+					"indices":[
+						0,
+						9
+					],
+					"name":"Royce Harding",
+					"screen_name":"JoomFlix",
+					"id":21303502
+				}
+			]
+		},
+		"place":null,
+		"truncated":false,
+		"source":"\u003Ca href=\"http:\/\/www.nambu.com\/\" rel=\"nofollow\"\u003ENambu\u003C\/a\u003E",
+		"created_at":"Tue Apr 05 13:35:13 +0000 2011",
+		"favorited":false,
+		"coordinates":null,
+		"in_reply_to_user_id":21303502,
+		"in_reply_to_screen_name":"JoomFlix",
+		"in_reply_to_status_id_str":"55260438098739200",
+		"geo":null,
+		"in_reply_to_status_id":55260438098739200,
+		"contributors":null,
+		"user":{
+			"id_str":"14539337",
+			"profile_background_tile":true,
+			"location":"Palo Alto, CA",
+			"followers_count":7383,
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"default_profile_image":false,
+			"lang":"en",
+			"profile_link_color":"126399",
+			"profile_sidebar_border_color":"f2f2f2",
+			"verified":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"follow_request_sent":false,
+			"profile_use_background_image":true,
+			"is_translator":false,
+			"show_all_inline_media":false,
+			"geo_enabled":true,
+			"profile_background_color":"ffffff",
+			"contributors_enabled":false,
+			"following":true,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"default_profile":false,
+			"friends_count":205,
+			"name":"Sencha",
+			"listed_count":734,
+			"statuses_count":1060,
+			"notifications":false,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"utc_offset":-28800,
+			"favourites_count":44,
+			"profile_sidebar_fill_color":"ffffff"
+		},
+		"retweeted":false,
+		"id":55262216823382016,
+		"in_reply_to_user_id_str":"21303502",
+		"retweet_count":0
+	},
+	{
+		"id_str":"55262134531137536",
+		"text":"@JoomFlix Sorry - issues with one of our servers. If you clear the SENCHASRV cookie in your browser you'll get it from one of the others.",
+		"entities":{
+			"urls":[
+
+			],
+			"hashtags":[
+
+			],
+			"user_mentions":[
+				{
+					"id_str":"21303502",
+					"indices":[
+						0,
+						9
+					],
+					"name":"Royce Harding",
+					"screen_name":"JoomFlix",
+					"id":21303502
+				}
+			]
+		},
+		"place":null,
+		"truncated":false,
+		"source":"\u003Ca href=\"http:\/\/www.nambu.com\/\" rel=\"nofollow\"\u003ENambu\u003C\/a\u003E",
+		"created_at":"Tue Apr 05 13:34:54 +0000 2011",
+		"favorited":false,
+		"coordinates":null,
+		"in_reply_to_user_id":21303502,
+		"in_reply_to_screen_name":"JoomFlix",
+		"in_reply_to_status_id_str":"55260438098739200",
+		"geo":null,
+		"in_reply_to_status_id":55260438098739200,
+		"contributors":null,
+		"user":{
+			"id_str":"14539337",
+			"profile_background_tile":true,
+			"location":"Palo Alto, CA",
+			"followers_count":7383,
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"default_profile_image":false,
+			"lang":"en",
+			"profile_link_color":"126399",
+			"profile_sidebar_border_color":"f2f2f2",
+			"verified":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"follow_request_sent":false,
+			"profile_use_background_image":true,
+			"is_translator":false,
+			"show_all_inline_media":false,
+			"geo_enabled":true,
+			"profile_background_color":"ffffff",
+			"contributors_enabled":false,
+			"following":true,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"default_profile":false,
+			"friends_count":205,
+			"name":"Sencha",
+			"listed_count":734,
+			"statuses_count":1060,
+			"notifications":false,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"utc_offset":-28800,
+			"favourites_count":44,
+			"profile_sidebar_fill_color":"ffffff"
+		},
+		"retweeted":false,
+		"id":55262134531137536,
+		"in_reply_to_user_id_str":"21303502",
+		"retweet_count":0
+	},
+	{
+		"contributors":null,
+		"retweeted":false,
+		"text":"Another exciting project @SenchaInc\u2019s #WebKit team! PhantomJS, the power of WebKit without the Browser: http:\/\/t.co\/rvAJtVJ",
+		"in_reply_to_user_id_str":null,
+		"retweet_count":7,
+		"id_str":"54992063686651904",
+		"entities":{
+			"urls":[
+				{
+					"indices":[
+						104,
+						123
+					],
+					"display_url":"sencha.com\/x\/a9",
+					"url":"http:\/\/t.co\/rvAJtVJ",
+					"expanded_url":"http:\/\/sencha.com\/x\/a9"
+				}
+			],
+			"hashtags":[
+				{
+					"text":"WebKit",
+					"indices":[
+						38,
+						45
+					]
+				}
+			],
+			"user_mentions":[
+				{
+					"indices":[
+						25,
+						35
+					],
+					"id_str":"14539337",
+					"name":"Sencha",
+					"screen_name":"SenchaInc",
+					"id":14539337
+				}
+			]
+		},
+		"place":null,
+		"source":"\u003Ca href=\"http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\" rel=\"nofollow\"\u003ETwitter for Mac\u003C\/a\u003E",
+		"created_at":"Mon Apr 04 19:41:44 +0000 2011",
+		"truncated":false,
+		"coordinates":null,
+		"favorited":false,
+		"geo":null,
+		"in_reply_to_user_id":null,
+		"in_reply_to_status_id":null,
+		"user":{
+			"listed_count":730,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"location":"Palo Alto, CA",
+			"favourites_count":44,
+			"friends_count":205,
+			"profile_sidebar_fill_color":"ffffff",
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"id_str":"14539337",
+			"show_all_inline_media":false,
+			"contributors_enabled":false,
+			"lang":"en",
+			"geo_enabled":true,
+			"profile_background_tile":true,
+			"followers_count":7340,
+			"default_profile_image":false,
+			"verified":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"profile_link_color":"126399",
+			"statuses_count":1053,
+			"profile_sidebar_border_color":"f2f2f2",
+			"default_profile":false,
+			"follow_request_sent":false,
+			"following":true,
+			"profile_use_background_image":true,
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"profile_background_color":"ffffff",
+			"name":"Sencha",
+			"notifications":false,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"is_translator":false,
+			"utc_offset":-28800
+		},
+		"in_reply_to_screen_name":null,
+		"id":54992063686651904,
+		"in_reply_to_status_id_str":null
+	},
+	{
+		"id_str":"54406744251707392",
+		"text":"@kYuZz We ship with docs \u2014 have you seen http:\/\/t.co\/0lOuPAE ?",
+		"entities":{
+			"hashtags":[
+
+			],
+			"urls":[
+				{
+					"indices":[
+						41,
+						60
+					],
+					"expanded_url":"http:\/\/sencha.com\/learn\/",
+					"display_url":"sencha.com\/learn\/",
+					"url":"http:\/\/t.co\/0lOuPAE"
+				}
+			],
+			"user_mentions":[
+				{
+					"id_str":"12826242",
+					"indices":[
+						0,
+						6
+					],
+					"name":"kYuZz",
+					"screen_name":"kYuZz",
+					"id":12826242
+				}
+			]
+		},
+		"place":null,
+		"truncated":false,
+		"source":"\u003Ca href=\"http:\/\/itunes.apple.com\/us\/app\/twitter\/id409789998?mt=12\" rel=\"nofollow\"\u003ETwitter for Mac\u003C\/a\u003E",
+		"created_at":"Sun Apr 03 04:55:53 +0000 2011",
+		"favorited":false,
+		"coordinates":null,
+		"in_reply_to_user_id":12826242,
+		"in_reply_to_screen_name":"kYuZz",
+		"in_reply_to_status_id_str":"54177532219633666",
+		"geo":null,
+		"in_reply_to_status_id":54177532219633666,
+		"contributors":null,
+		"user":{
+			"id_str":"14539337",
+			"follow_request_sent":false,
+			"profile_background_tile":true,
+			"location":"Palo Alto, CA",
+			"is_translator":false,
+			"followers_count":7370,
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"contributors_enabled":false,
+			"lang":"en",
+			"profile_link_color":"126399",
+			"show_all_inline_media":false,
+			"geo_enabled":true,
+			"friends_count":205,
+			"profile_sidebar_border_color":"f2f2f2",
+			"listed_count":733,
+			"verified":false,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"profile_use_background_image":true,
+			"default_profile":false,
+			"statuses_count":1060,
+			"profile_background_color":"ffffff",
+			"following":false,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"protected":false,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"default_profile_image":false,
+			"name":"Sencha",
+			"notifications":false,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc",
+			"id":14539337,
+			"utc_offset":-28800,
+			"favourites_count":44,
+			"profile_sidebar_fill_color":"ffffff"
+		},
+		"retweeted":false,
+		"id":54406744251707392,
+		"in_reply_to_user_id_str":"12826242",
+		"retweet_count":0
+	},
+	{
+		"text":"Community #ff this week: @nilsdehl & @dkd_de, creators of Frankfurt's lovely mobile transport app http:\/\/sencha.com\/x\/a8",
+		"truncated":false,
+		"entities":{
+			"user_mentions":[
+				{
+					"indices":[
+						25,
+						34
+					],
+					"name":"Nils Dehl",
+					"id_str":"24888106",
+					"id":24888106,
+					"screen_name":"nilsdehl"
+				},
+				{
+					"indices":[
+						37,
+						44
+					],
+					"name":"dkd",
+					"id_str":"119785443",
+					"id":119785443,
+					"screen_name":"dkd_de"
+				}
+			],
+			"urls":[
+				{
+					"indices":[
+						98,
+						120
+					],
+					"expanded_url":null,
+					"url":"http:\/\/sencha.com\/x\/a8"
+				}
+			],
+			"hashtags":[
+				{
+					"text":"ff",
+					"indices":[
+						10,
+						13
+					]
+				}
+			]
+		},
+		"place":null,
+		"in_reply_to_user_id":null,
+		"favorited":false,
+		"source":"\u003Ca href=\"http:\/\/www.nambu.com\/\" rel=\"nofollow\"\u003ENambu\u003C\/a\u003E",
+		"in_reply_to_screen_name":null,
+		"created_at":"Fri Apr 01 20:04:01 +0000 2011",
+		"in_reply_to_status_id_str":null,
+		"contributors":null,
+		"coordinates":null,
+		"retweeted":false,
+		"in_reply_to_user_id_str":null,
+		"id_str":"53910507639422976",
+		"retweet_count":2,
+		"geo":null,
+		"user":{
+			"profile_sidebar_border_color":"f2f2f2",
+			"default_profile_image":false,
+			"contributors_enabled":false,
+			"description":"Sencha makes JavaScript frameworks to develop amazing web apps built on web standards. Check out Ext JS and Sencha Touch.",
+			"location":"Palo Alto, CA",
+			"lang":"en",
+			"profile_use_background_image":true,
+			"profile_background_color":"ffffff",
+			"follow_request_sent":false,
+			"profile_background_image_url":"http:\/\/a2.twimg.com\/profile_background_images\/200647417\/oolong.png",
+			"show_all_inline_media":false,
+			"geo_enabled":true,
+			"created_at":"Sat Apr 26 03:54:35 +0000 2008",
+			"friends_count":205,
+			"time_zone":"Pacific Time (US & Canada)",
+			"profile_text_color":"333333",
+			"is_translator":false,
+			"following":true,
+			"profile_sidebar_fill_color":"ffffff",
+			"followers_count":7310,
+			"protected":false,
+			"id_str":"14539337",
+			"listed_count":727,
+			"statuses_count":1051,
+			"profile_background_tile":true,
+			"favourites_count":44,
+			"profile_image_url":"http:\/\/a1.twimg.com\/profile_images\/1233097698\/sencha-blue_normal.png",
+			"name":"Sencha",
+			"id":14539337,
+			"default_profile":false,
+			"verified":false,
+			"notifications":false,
+			"utc_offset":-28800,
+			"profile_link_color":"126399",
+			"url":"http:\/\/sencha.com",
+			"screen_name":"SenchaInc"
+		},
+		"in_reply_to_status_id":null,
+		"id":53910507639422976
+	}
+]
