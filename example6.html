@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 6]</title>
+		<title>ExtJS Templating Magic [Example 5]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -42,34 +42,10 @@ Ext.onReady(function() {
 		{ compiled: true }
 	);
 
-	var orderItemTemplate = new Ext.XTemplate(
-		'<tr <tpl if="this.onlyOne(values)">class="only-one"</tpl>>',
-			'<td>{#:this.formatNo}.</td>',
-			'<td><a href="detail.php?id={id}">{name}</a></td>',
-			'<td>{quantity}</td>',
-			'<td>{[fm.number(this.grossPrice(values.unitPrice), "0.00")]}</td>',
-			'<td>{[fm.number(this.grossItem(values), "0.00")]}</td>',
-		'</tr>', {
-			compiled: true,
-			onlyOne: function(item) {
-				return item.quantity == 1;
-			},
-			formatNo: function(number) {
-				return String.leftPad(number.toString(), 5, '0');
-			},
-			grossPrice: function(price) {
-				return price * (1 + currentTax);
-			},
-			grossItem: function(item) {
-				return this.grossPrice(item.unitPrice) * item.quantity;
-			}
-		}
-	);
-
 	var currentTax = 0.15;
 	var template   = new Ext.XTemplate(
 	'<h1>Order {number}</h1>',
-	'<h2>{status} on {date:date("Y-m-d")} to {[this. addressTemplate.apply(values.shippingAddress)]}</h2>',
+	'<h2>{status} on {date:date("Y-m-d")} to {[this.address(values.shippingAddress)]}</h2>',
 	'<h3>Customer</h3>',
 	'<dl>',
 		'<dt>Name</dt>',
@@ -80,7 +56,13 @@ Ext.onReady(function() {
 	'<table>',
 		'<caption>Order items</caption>',
 		'<tpl for="items">',
-			'{[this.orderItemTemplate.apply(values)]}',
+			'<tr <tpl if="this.onlyOne(values)">class="only-one"</tpl>>',
+				'<td>{#:this.formatNo}.</td>',
+				'<td><a href="detail.php?id={id}">{name}</a></td>',
+				'<td>{quantity}</td>',
+				'<td>{[fm.number(this.grossPrice(values.unitPrice), "0.00")]}</td>',
+				'<td>{[fm.number(this.grossItem(values), "0.00")]}</td>',
+			'</tr>',
 		'</tpl>',
 			'<tr>',
 				'<th colspan="4">Total</th>',
@@ -88,12 +70,25 @@ Ext.onReady(function() {
 			'</tr>',
 	 '</table>', {
 		compiled: true,
-		addressTemplate: addressTemplate,
-		orderItemTemplate: orderItemTemplate,
+		address: function(address) {
+			return addressTemplate.apply(address);
+		},
+		onlyOne: function(item) {
+			return item.quantity == 1;
+		},
+		formatNo: function(number) {
+			return String.leftPad(number.toString(), 5, '0');
+		},
+		grossPrice: function(price) {
+			return price * (1 + currentTax);
+		},
+		grossItem: function(item) {
+			return this.grossPrice(item.unitPrice) * item.quantity;
+		},
 		orderSum: function(order) {
 			var sum = 0;
 			Ext.each(order.items, function(item) {
-				sum += (item.unitPrice * (1 + currentTax)) * item.quantity;
+				sum += this.grossItem(item);
 			}, this);
 			return sum;
 		}
@@ -102,7 +97,7 @@ Ext.onReady(function() {
 });
     	</script>
 	</head>
-	<body id="example6">
-		<h1>ExtJS Templating Magic [Example 6]</h1>
+	<body id="example5">
+		<h1>ExtJS Templating Magic [Example 5]</h1>
 	</body>
 </html>

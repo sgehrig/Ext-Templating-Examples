@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 12]</title>
+		<title>ExtJS Templating Magic [Example 11]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -26,35 +26,36 @@ Ext.onReady(function() {
 		]
 	});
 
-	var grid = new Ext.grid.GridPanel({
+	var listView = new Ext.list.ListView({
 		store: store,
-		autoHeight: true,
-		autoExpandColumn: 'col-email',
+		multiSelect: true,
+		simpleSelect: true,
 		columns: [{
-			header: 'Gravatar',
-			xtype: 'templatecolumn',
-			tpl: '<img src="http://www.gravatar.com/avatar/{gravatar}?s=30&d=identicon"/>',
-			width: 80
+			header: '&nbsp;',
+			tpl: '<img src="http://www.gravatar.com/avatar/{gravatar}?s=30&d=identicon"/>'
 		}, {
 			header: 'Login',
-			dataIndex: 'login',
-			width: 140
+			dataIndex: 'login'
 		}, {
 			header: 'Email',
-			dataIndex: 'email',
-			id: 'col-email'
+			dataIndex: 'email'
 		}, {
 			header: 'Nickname',
-			xtype: 'templatecolumn',
-			tpl: '<tpl if="nick">{nick}</tpl><tpl if="!nick"><i>none</i></tpl>',
-			width: 160
-		}]
+			tpl: '<tpl if="nick">{nick}</tpl><tpl if="!nick"><i>none</i></tpl>'
+		}],
+		listeners: {
+			selectionchange: function(view, selected) {
+				Ext.get('status').update(String.format('{0} selected', selected.length));
+			}
+		}
 	});
-	grid.render(Ext.getBody());
+	listView.render('list');
 });
     	</script>
 	</head>
-	<body id="example12">
-		<h1>ExtJS Templating Magic [Example 12]</h1>
+	<body id="example11">
+		<h1>ExtJS Templating Magic [Example 11]</h1>
+		<div id="list"></div>
+		<div id="status">0 selected</div>
 	</body>
 </html>

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 5]</title>
+		<title>ExtJS Templating Magic [Example 4]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -37,11 +37,6 @@ Ext.onReady(function() {
 		}]
 	};
 
-	var addressTemplate = new Ext.XTemplate(
-		'<address>{address}, {zip} {city}, <b>{state}</b></address>',
-		{ compiled: true }
-	);
-
 	var currentTax = 0.15;
 	var template   = new Ext.XTemplate(
 	'<h1>Order {number}</h1>',
@@ -66,12 +61,12 @@ Ext.onReady(function() {
 		'</tpl>',
 			'<tr>',
 				'<th colspan="4">Total</th>',
-				'<td>{[this.orderSum(values)]}</td>',
+				'<td>{[fm.number(this.orderSum(values), "0.00")]}</td>',
 			'</tr>',
 	 '</table>', {
 		compiled: true,
 		address: function(address) {
-			return addressTemplate.apply(address);
+			return address.address + ", " + address.zip + " " + address.city + ", " + address.state;
 		},
 		onlyOne: function(item) {
 			return item.quantity == 1;
@@ -97,7 +92,7 @@ Ext.onReady(function() {
 });
     	</script>
 	</head>
-	<body id="example5">
-		<h1>ExtJS Templating Magic [Example 5]</h1>
+	<body id="example4">
+		<h1>ExtJS Templating Magic [Example 4]</h1>
 	</body>
 </html>

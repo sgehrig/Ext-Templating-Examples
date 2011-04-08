@@ -9,29 +9,18 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var template = new Ext.XTemplate(
-	'<table>',
-		'<tpl for=".">',
-			'<tr>',
-				'<td>{#}.</td>',
-				'<td><b>{created_at}</b></td>',
-				'<td><p>{text}</p></td>',
-			'</tr>',
-		'</tpl>',
-	 '</table>'
-	);
+	var template1 = new Ext.Template("<h1>Hello {0}!</h1>");
+	template1.append('content', ['World']);
 
-	Ext.Ajax.request({
-		url: 'senchainc-timeline.json',
-		success: function(response) {
-			var timeline = Ext.decode(response.responseText);
-			template.append(Ext.getBody(), timeline);
-		}
-	});
+	var template2 = new Ext.Template("<h1>{greeting} {name}!</h1>");
+	template2.append('content', {greeting: 'Good morning', name: 'Earth'});
+
 });
     	</script>
 	</head>
 	<body id="example1">
 		<h1>ExtJS Templating Magic [Example 1]</h1>
+		<div id="content"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

@@ -11,26 +11,21 @@
 Ext.onReady(function() {
 	var template = new Ext.XTemplate(
 	'<table>',
-		'<caption>Recent tweets by @SenchaInc</caption>',
 		'<tpl for=".">',
 			'<tr>',
 				'<td>{#}.</td>',
-				'<td><b>{created_at:date("Y-m-d H:i:s")}</b></td>',
+				'<td><b>{created_at}</b></td>',
 				'<td><p>{text}</p></td>',
-				'<td>',
-					'<tpl if="retweet_count &gt; 0">retweeted {retweet_count} times</tpl>',
-					'<tpl if="retweet_count == 0"><em>not retweeted</em></tpl>',
-				'</td>',
 			'</tr>',
 		'</tpl>',
-	'</table>'
+	 '</table>'
 	);
 
 	Ext.Ajax.request({
 		url: 'senchainc-timeline.json',
 		success: function(response) {
 			var timeline = Ext.decode(response.responseText);
-			template.append(Ext.getBody(), timeline);
+			template.append('content', timeline);
 		}
 	});
 });
@@ -38,5 +33,7 @@ Ext.onReady(function() {
 	</head>
 	<body id="example2">
 		<h1>ExtJS Templating Magic [Example 2]</h1>
+		<div id="content"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

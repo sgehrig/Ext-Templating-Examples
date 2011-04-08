@@ -2,46 +2,59 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 13]</title>
+		<title>ExtJS Templating Magic [Example 12]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	MyUrlButton = Ext.extend(Ext.Button, {
-		url: '#',
-		template: new Ext.XTemplate('<div id="{0}" class="my-link-btn {1}"><div classs="{2}"><a href="{3}"></a></div></div>'),
-		getTemplateArgs: function() {
-			return [ this.id, this.cls, 'x-btn-' + this.scale + ' x-btn-icon-' + this.scale + '-' + this.iconAlign, this.url ];
-		},
-		buttonSelector: 'a:first-child'
+	var store = new Ext.data.ArrayStore({
+		idIndex: 0,
+		fields: [
+			{ name: 'id', type: 'int', mapping: 0 },
+			{ name: 'login', type: 'string', mapping: 1 },
+			{ name: 'nick', type: 'string', mapping: 2, useNull: true },
+			{ name: 'email', type: 'string', mapping: 3 },
+			{ name: 'gravatar', type: 'string', mapping: 4 }
+		],
+		data: [
+			[1, 'john', 'Johnny', 'john@example.com', 'd4c74594d841139328695756648b6bd6'],
+			[2, 'jack', null, 'jack@example.com', 'ee5770a649fccbde3e448d90591673ca'],
+			[3, 'jane', 'LA69', 'jane@example.com', '9e26471d35a78862c17e467d87cddedf'],
+			[4, 'jim', 'Jimmy', 'jim@example.com', 'db40f846ab0a3b10522f83c6ae657e31']
+		]
 	});
 
-	var tbButtons	= [
-		new MyUrlButton({
-			url: 'index.html',
-			text: 'Back to home',
-			cls: 'home-btn'
-		}),
-		'-'
-	];
-	for (var i = 1; i <= 13; i++) {
-		tbButtons.push(new MyUrlButton({
-			url: String.format('example{0}.html', i),
-			text: String.format('Example {0}', i)
-		}));
-	}
-
-	var toolbar = new Ext.Toolbar({
-		items: tbButtons
+	var grid = new Ext.grid.GridPanel({
+		store: store,
+		autoHeight: true,
+		autoExpandColumn: 'col-email',
+		columns: [{
+			header: 'Gravatar',
+			xtype: 'templatecolumn',
+			tpl: '<img src="http://www.gravatar.com/avatar/{gravatar}?s=30&d=identicon"/>',
+			width: 80
+		}, {
+			header: 'Login',
+			dataIndex: 'login',
+			width: 140
+		}, {
+			header: 'Email',
+			dataIndex: 'email',
+			id: 'col-email'
+		}, {
+			header: 'Nickname',
+			xtype: 'templatecolumn',
+			tpl: '<tpl if="nick">{nick}</tpl><tpl if="!nick"><i>none</i></tpl>',
+			width: 160
+		}]
 	});
-
-	toolbar.render(Ext.getBody());
+	grid.render(Ext.getBody());
 });
     	</script>
 	</head>
-	<body id="example13">
-		<h1>ExtJS Templating Magic [Example 13]</h1>
+	<body id="example12">
+		<h1>ExtJS Templating Magic [Example 12]</h1>
 	</body>
 </html>

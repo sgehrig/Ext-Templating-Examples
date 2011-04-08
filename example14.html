@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>ExtJS Templating Magic [Example 13]</title>
+		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
+    	<script src="ext-3.3.1/ext-all.js"></script>
+    	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
+    	<link rel="stylesheet" type="text/css" href="examples.css" />
+    	<script>
+Ext.onReady(function() {
+	MyUrlButton = Ext.extend(Ext.Button, {
+		url: '#',
+		template: new Ext.XTemplate('<div id="{0}" class="my-link-btn {1}"><div classs="{2}"><a href="{3}"></a></div></div>'),
+		getTemplateArgs: function() {
+			return [ this.id, this.cls, 'x-btn-' + this.scale + ' x-btn-icon-' + this.scale + '-' + this.iconAlign, this.url ];
+		},
+		buttonSelector: 'a:first-child'
+	});
+
+	var tbButtons	= [
+		new MyUrlButton({
+			url: 'index.html',
+			text: 'Back to home',
+			cls: 'home-btn'
+		}),
+		'-'
+	];
+	for (var i = 1; i <= 13; i++) {
+		tbButtons.push(new MyUrlButton({
+			url: String.format('example{0}.html', i),
+			text: String.format('Example {0}', i)
+		}));
+	}
+
+	var toolbar = new Ext.Toolbar({
+		items: tbButtons
+	});
+
+	toolbar.render(Ext.getBody());
+});
+    	</script>
+	</head>
+	<body id="example13">
+		<h1>ExtJS Templating Magic [Example 13]</h1>
+	</body>
+</html>
