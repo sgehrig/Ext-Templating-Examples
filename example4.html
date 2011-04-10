@@ -9,46 +9,163 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var order = {
-		number: 4711,
-		date: new Date(2011, 2, 29, 12, 0, 0),
-		status: 'shipped',
-		shippingAddress: {
-			address: '1 Sandy Way',
-		city: 'Tatooine',
-		state: 'Tatooine',
-			zip: '0815'
+	var orderList	= [
+		{
+			"Order":{
+				"Id":10326,
+				"OrderDate":"\/Date(844898400000+0000)\/",
+				"RequiredDate":"\/Date(847321200000+0000)\/",
+				"ShippedDate":"\/Date(845244000000+0000)\/",
+				"ShipVia":2,
+				"Freight":77.92,
+				"ShipName":"Bólido Comidas preparadas",
+				"ShipAddress":"C/ Araquil, 67",
+				"ShipCity":"Madrid",
+				"ShipPostalCode":"28023",
+				"ShipCountry":"Spain"
+			},
+			"OrderDetails":[
+				{
+					"ProductId":4,
+					"UnitPrice":17.6,
+					"Quantity":24,
+					"Discount":0
+				},
+				{
+					"ProductId":57,
+					"UnitPrice":15.6,
+					"Quantity":16,
+					"Discount":0
+				},
+				{
+					"ProductId":75,
+					"UnitPrice":6.2,
+					"Quantity":50,
+					"Discount":0
+				}
+			]
 		},
-		customer: {
-			firstName: 'Luke',
-			lastName: 'Skywalker',
-			email: 'luke@deathstar.com'
+		{
+			"Order":{
+				"Id":10801,
+				"OrderDate":"\/Date(883350000000+0000)\/",
+				"RequiredDate":"\/Date(885769200000+0000)\/",
+				"ShippedDate":"\/Date(883522800000+0000)\/",
+				"ShipVia":2,
+				"Freight":97.09,
+				"ShipName":"Bólido Comidas preparadas",
+				"ShipAddress":"C/ Araquil, 67",
+				"ShipCity":"Madrid",
+				"ShipPostalCode":"28023",
+				"ShipCountry":"Spain"
+			},
+			"OrderDetails":[
+				{
+					"ProductId":17,
+					"UnitPrice":39,
+					"Quantity":40,
+					"Discount":0.25
+				},
+				{
+					"ProductId":29,
+					"UnitPrice":123.79,
+					"Quantity":20,
+					"Discount":0.25
+				}
+			]
 		},
-		items: [{
-			id: 1,
-			name: 'Light saber',
-			quantity: 5,
-			unitPrice: 100.5
-		}, {
-			id: 2,
-			name: 'C3PO',
-			quantity: 1,
-			unitPrice: 95450.75
-		}]
-	};
+		{
+			"Order":{
+				"Id":10970,
+				"OrderDate":"\/Date(890694000000+0000)\/",
+				"RequiredDate":"\/Date(891900000000+0000)\/",
+				"ShippedDate":"\/Date(893368800000+0000)\/",
+				"ShipVia":1,
+				"Freight":16.16,
+				"ShipName":"Bólido Comidas preparadas",
+				"ShipAddress":"C/ Araquil, 67",
+				"ShipCity":"Madrid",
+				"ShipPostalCode":"28023",
+				"ShipCountry":"Spain"
+			},
+			"OrderDetails":[
+				{
+					"ProductId":52,
+					"UnitPrice":7,
+					"Quantity":40,
+					"Discount":0.2
+				}
+			]
+		}
+	];
 
-	var template = new Ext.XTemplate(
-	 '<table>',
+	var currentTax = 0.15;
+	var template   = new Ext.XTemplate(
+	'<h2>Order Overview</h2>',
+	'<tpl for=".">',
+		'<h3>#{[values.Order.Id]}</h3>',
+		'<dl>',
+			'<dt>Order Date:</dt>',
+			'<dd>{[this.date(values.Order.OrderDate)]}</dd>',
+			'<dt>Required Date:</dt>',
+			'<dd>{[this.date(values.Order.RequiredDate)]}</dd>',
+			'<dt>Shipped Date:</dt>',
+			'<dd>{[this.date(values.Order.ShippedDate)]}</dd>',
+		'</dl>',
+	'</tpl>', {
+		compiled: true,
+		date: function(d) {
+			return Date.parseDate(d, 'M$').format('l, F d, Y');
+		}
+	});
+
+/*	'<dl>',
+		'<dt>Name</dt>',
+		'<dd>{[values.customer.firstName]} {[values.customer.lastName]}</dd>',
+		'<dt>Email</dt>',
+		'<dd><a href="mailto:{ [values.customer.email]}">{[values.customer.email]}</a></dd>',
+	'</dl>',
+	'<table>',
+		'<caption>Order items</caption>',
 		'<tpl for="items">',
-			'<tr>',
-				'<tpl if="xindex == 1"><td rowspan="{[xcount]}">Items</td></tpl>',
-				'<td>{#}.</td>',
-				'<td>{quantity} x {name} on {parent.date:date("Y-m-d")}</td>',
+			'<tr <tpl if="this.onlyOne(values)">class="only-one"</tpl>>',
+				'<td>{#:this.formatNo}.</td>',
+				'<td><a href="detail.php?id={id}">{name}</a></td>',
+				'<td>{quantity}</td>',
+				'<td>{[fm.number(this.grossPrice(values.unitPrice), "0.00")]}</td>',
+				'<td>{[fm.number(this.grossItem(values), "0.00")]}</td>',
 			'</tr>',
 		'</tpl>',
-	 '</table>'
-	);
-	template.append('content', order);
+			'<tr>',
+				'<th colspan="4">Total</th>',
+				'<td>{[fm.number(this.orderSum(values), "0.00")]}</td>',
+			'</tr>',
+	 '</table>', {
+		compiled: true,
+		address: function(address) {
+			return address.address + ", " + address.zip + " " + address.city + ", " + address.state;
+		},
+		onlyOne: function(item) {
+			return item.quantity == 1;
+		},
+		formatNo: function(number) {
+			return String.leftPad(number.toString(), 5, '0');
+		},
+		grossPrice: function(price) {
+			return price * (1 + currentTax);
+		},
+		grossItem: function(item) {
+			return this.grossPrice(item.unitPrice) * item.quantity;
+		},
+		orderSum: function(order) {
+			var sum = 0;
+			Ext.each(order.items, function(item) {
+				sum += this.grossItem(item);
+			}, this);
+			return sum;
+		}
+	});*/
+	template.append('content', orderList);
 });
     	</script>
 	</head>

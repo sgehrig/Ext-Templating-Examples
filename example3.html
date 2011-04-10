@@ -9,30 +9,97 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
+
+	var orderList = [
+		{
+			"Order":{
+				"Id":10326,
+				"CustomerId":"BOLID"
+			},
+			"OrderDetails":[
+				{
+					"OrderId":10326,
+					"ProductId":4,
+					"UnitPrice":17.6,
+					"Quantity":24,
+					"Discount":0
+				},
+				{
+					"OrderId":10326,
+					"ProductId":57,
+					"UnitPrice":15.6,
+					"Quantity":16,
+					"Discount":0
+				},
+				{
+					"OrderId":10326,
+					"ProductId":75,
+					"UnitPrice":6.2,
+					"Quantity":50,
+					"Discount":0
+				}
+			]
+		},
+		{
+			"Order":{
+				"Id":10801,
+				"CustomerId":"BOLID"
+			},
+			"OrderDetails":[
+				{
+					"OrderId":10801,
+					"ProductId":17,
+					"UnitPrice":39,
+					"Quantity":40,
+					"Discount":0.25
+				},
+				{
+					"OrderId":10801,
+					"ProductId":29,
+					"UnitPrice":123.79,
+					"Quantity":20,
+					"Discount":0.25
+				}
+			]
+		},
+		{
+			"Order":{
+				"Id":10970,
+				"CustomerId":"BOLID"
+			},
+			"OrderDetails":[
+				{
+					"OrderId":10970,
+					"ProductId":52,
+					"UnitPrice":7,
+					"Quantity":40,
+					"Discount":0.2
+				}
+			]
+		}
+	];
+
 	var template = new Ext.XTemplate(
 	'<table>',
-		'<caption>Recent tweets by @SenchaInc</caption>',
+		'<tbody>',
 		'<tpl for=".">',
-			'<tr>',
-				'<td>{#}.</td>',
-				'<td><b>{created_at:date("Y-m-d H:i:s")}</b></td>',
-				'<td><p>{text}</p></td>',
-				'<td>',
-					'<tpl if="retweet_count &gt; 0">retweeted {retweet_count} times</tpl>',
-					'<tpl if="retweet_count == 0"><em>not retweeted</em></tpl>',
-				'</td>',
+			'<tpl for="OrderDetails">',
+				'<tr class="{[xindex % 2 === 0 ? "even" : "odd"]}">',
+					'<tpl if="xindex == 1">',
+						'<th rowspan="{[xcount]}">{parent.Order.Id}</th>',
+					'</tpl>',
+					'<td>{#}.</td>',
+					'<td>Product ID <b>{ProductId}</b></td>',
+					'<td><tpl if="UnitPrice &gt; 15"><u>{UnitPrice:usMoney}</u></tpl><tpl if="UnitPrice &lt;= 15">{UnitPrice:usMoney}</tpl></td>',
+					'<td>{Quantity}</td>',
+				'</tpl>',
 			'</tr>',
 		'</tpl>',
-	'</table>'
+		'</tbody>',
+	 '</table>'
 	);
 
-	Ext.Ajax.request({
-		url: 'senchainc-timeline.json',
-		success: function(response) {
-			var timeline = Ext.decode(response.responseText);
-			template.append('content', timeline);
-		}
-	});
+	template.append('content', orderList);
 });
     	</script>
 	</head>

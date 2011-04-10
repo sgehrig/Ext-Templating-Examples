@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 9]</title>
+		<title>ExtJS Templating Magic [Example 10]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -26,24 +26,46 @@ Ext.onReady(function() {
 		]
 	});
 
-	var combo = new Ext.form.ComboBox({
-		typeAhead: false,
-		forceSelection: true,
-		editable: false,
-		triggerAction: 'all',
-		mode: 'local',
+	var columns = 3;
+	var template = new Ext.XTemplate(
+		'<tpl for=".">',
+		'{[this.groupStart(xindex, \'<div class="group">\')]}',
+			'<div class="item">',
+				'<div class="image"><img src="http://www.gravatar.com/avatar/{gravatar}?s=100&d=identicon"/></div>',
+				'<div class="name">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div>',
+			'</div>',
+		'{[this.groupEnd(xindex, xcount, "</div>")]}',
+		'</tpl>', {
+			groupStart: function(i, str) {
+				return (i == 1 || i % columns == 1) ? str : '';
+			},
+			groupEnd: function(i, total, str) {
+				return (i == total || i % columns == 0) ? str : '';
+			}
+		}
+	);
+
+	var dataView = new Ext.DataView({
 		store: store,
-		valueField: 'id',
-		displayField: 'email',
-		listWidth: 300,
-		tpl: '<tpl for="."><div class="x-combo-list-item"><div class="image"><img src="http://www.gravatar.com/avatar/{gravatar}?s=50&d=identicon"/></div><div class="name">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div></div></tpl>'
+		tpl: template,
+		multiSelect: true,
+		simpleSelect: true,
+		selectedClass: 'item-selected',
+		overClass: 'item-over',
+		itemSelector: 'div.item',
+		listeners: {
+			selectionchange: function(view, selected) {
+				Ext.get('status').update(String.format('{0} selected', selected.length));
+			}
+		}
 	});
-	combo.render(Ext.getBody());
+	dataView.render('list');
 });
     	</script>
 	</head>
-	<body id="example9">
-		<h1>ExtJS Templating Magic [Example 9]</h1>
+	<body id="example10">
+		<h1>ExtJS Templating Magic [Example 10]</h1>
+		<div id="list"></div>
+		<div id="status">0 selected</div>
 	</body>
 </html>
-

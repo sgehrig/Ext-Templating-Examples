@@ -9,25 +9,49 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
+
+	var orderList = [
+		{
+			"ProductId":4,
+			"UnitPrice":17.6,
+			"Quantity":24
+		},
+		{
+			"ProductId":57,
+			"UnitPrice":15.6,
+			"Quantity":16
+		},
+		{
+			"ProductId":75,
+			"UnitPrice":6.2,
+			"Quantity":50
+		}
+	];
+
 	var template = new Ext.XTemplate(
 	'<table>',
+		'<thead>',
+			'<tr>',
+				'<th>No.</th>',
+				'<th>Product</th>',
+				'<th>Unit Price</th>',
+				'<th>Quantity</th>',
+			'</tr>',
+		'</thead>',
+		'<tbody>',
 		'<tpl for=".">',
 			'<tr>',
 				'<td>{#}.</td>',
-				'<td><b>{created_at}</b></td>',
-				'<td><p>{text}</p></td>',
+				'<td>Product ID <b>{ProductId}</b></td>',
+				'<td>{UnitPrice:usMoney}</td>',
+				'<td>{Quantity}</td>',
 			'</tr>',
 		'</tpl>',
+		'</tbody>',
 	 '</table>'
 	);
 
-	Ext.Ajax.request({
-		url: 'senchainc-timeline.json',
-		success: function(response) {
-			var timeline = Ext.decode(response.responseText);
-			template.append('content', timeline);
-		}
-	});
+	template.append('content', orderList);
 });
     	</script>
 	</head>

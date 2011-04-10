@@ -19,33 +19,45 @@ em, i {
 	font-style: italic;
 }
 
-/**
- * example9.html
- */
-#example9 .x-combo-list-item {
-	overflow: hidden;
+tr.even {
+	background-color: #888888;
 }
 
-#example9 .x-combo-list-item .image {
-	float: left;
-	width: 50px;
-	height: 50px;
+tr.odd {
+	background-color: #eeeeee;
 }
 
-#example9 .x-combo-list-item .name {
-	margin-left: 55px;
-	width: 200px;
+td, th {
+	padding: 4px 8px;
 }
 
 /**
  * example10.html
  */
-#example10 .group {
+#example10 .x-combo-list-item {
+	overflow: hidden;
+}
+
+#example10 .x-combo-list-item .image {
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+
+#example10 .x-combo-list-item .name {
+	margin-left: 55px;
+	width: 200px;
+}
+
+/**
+ * example11.html
+ */
+#example11 .group {
 	clear: both;
 	overflow: auto;
 }
 
-#example10 .item {
+#example11 .item {
 	float: left;
 	width: 145px;
 	height: 145px;
@@ -54,32 +66,32 @@ em, i {
 	cursor: pointer;
 }
 
-#example10 .item div {
+#example11 .item div {
 	text-align: center;
 }
 
-#example10 .item .image img {
+#example11 .item .image img {
 	width: 100px;
 	height: 100px;
 	margin: 2px;
 	border: 5px solid #dddddd;
 }
 
-#example10 .item .name {
+#example11 .item .name {
 	font-size: 75%;
 }
 
-#example10 .item.item-over {
+#example11 .item.item-over {
 	background-color: #eeeeee;
 }
 
-#example10 .item.item-selected {
+#example11 .item.item-selected {
 	border-color: #ff0000;
 }
 
 /**
- * example13.html
+ * example14.html
  */
-#example13 .my-link-btn {
+#example14 .my-link-btn {
 	margin: 5px;
 }
