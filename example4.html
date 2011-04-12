@@ -9,97 +9,122 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var orderList	= [
-		{
-			"Order":{
-				"Id":10326,
-				"OrderDate":"\/Date(844898400000+0000)\/",
-				"RequiredDate":"\/Date(847321200000+0000)\/",
-				"ShippedDate":"\/Date(845244000000+0000)\/",
-				"ShipVia":2,
-				"Freight":77.92,
-				"ShipName":"Bólido Comidas preparadas",
-				"ShipAddress":"C/ Araquil, 67",
-				"ShipCity":"Madrid",
-				"ShipPostalCode":"28023",
-				"ShipCountry":"Spain"
-			},
-			"OrderDetails":[
-				{
-					"ProductId":4,
-					"UnitPrice":17.6,
-					"Quantity":24,
-					"Discount":0
-				},
-				{
-					"ProductId":57,
-					"UnitPrice":15.6,
-					"Quantity":16,
-					"Discount":0
-				},
-				{
-					"ProductId":75,
-					"UnitPrice":6.2,
-					"Quantity":50,
-					"Discount":0
-				}
-			]
+	var order = {
+		"Customer":{
+			"Id":"BOLID",
+			"CompanyName":"Bólido Comidas preparadas",
+			"ContactName":"Martín Sommer",
+			"ContactTitle":"Owner",
+			"Address":"C/ Araquil, 67",
+			"City":"Madrid",
+			"PostalCode":"28023",
+			"Country":"Spain",
+			"Phone":"(91) 555 22 82",
+			"Fax":"(91) 555 91 99"
 		},
-		{
-			"Order":{
-				"Id":10801,
-				"OrderDate":"\/Date(883350000000+0000)\/",
-				"RequiredDate":"\/Date(885769200000+0000)\/",
-				"ShippedDate":"\/Date(883522800000+0000)\/",
-				"ShipVia":2,
-				"Freight":97.09,
-				"ShipName":"Bólido Comidas preparadas",
-				"ShipAddress":"C/ Araquil, 67",
-				"ShipCity":"Madrid",
-				"ShipPostalCode":"28023",
-				"ShipCountry":"Spain"
-			},
-			"OrderDetails":[
-				{
-					"ProductId":17,
-					"UnitPrice":39,
-					"Quantity":40,
-					"Discount":0.25
+		"CustomerOrders":[
+			{
+				"Order":{
+					"Id":10326,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(844898400000+0000)\/",
+					"RequiredDate":"\/Date(847321200000+0000)\/",
+					"ShippedDate":"\/Date(845244000000+0000)\/",
+					"ShipVia":2,
+					"Freight":77.92,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
 				},
-				{
-					"ProductId":29,
-					"UnitPrice":123.79,
-					"Quantity":20,
-					"Discount":0.25
-				}
-			]
-		},
-		{
-			"Order":{
-				"Id":10970,
-				"OrderDate":"\/Date(890694000000+0000)\/",
-				"RequiredDate":"\/Date(891900000000+0000)\/",
-				"ShippedDate":"\/Date(893368800000+0000)\/",
-				"ShipVia":1,
-				"Freight":16.16,
-				"ShipName":"Bólido Comidas preparadas",
-				"ShipAddress":"C/ Araquil, 67",
-				"ShipCity":"Madrid",
-				"ShipPostalCode":"28023",
-				"ShipCountry":"Spain"
+				"OrderDetails":[
+					{
+						"OrderId":10326,
+						"ProductId":4,
+						"UnitPrice":17.6,
+						"Quantity":24,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":57,
+						"UnitPrice":15.6,
+						"Quantity":16,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":75,
+						"UnitPrice":6.2,
+						"Quantity":50,
+						"Discount":0
+					}
+				]
 			},
-			"OrderDetails":[
-				{
-					"ProductId":52,
-					"UnitPrice":7,
-					"Quantity":40,
-					"Discount":0.2
-				}
-			]
-		}
-	];
+			{
+				"Order":{
+					"Id":10801,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(883350000000+0000)\/",
+					"RequiredDate":"\/Date(885769200000+0000)\/",
+					"ShippedDate":"\/Date(883522800000+0000)\/",
+					"ShipVia":2,
+					"Freight":97.09,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10801,
+						"ProductId":17,
+						"UnitPrice":39,
+						"Quantity":40,
+						"Discount":0.25
+					},
+					{
+						"OrderId":10801,
+						"ProductId":29,
+						"UnitPrice":123.79,
+						"Quantity":20,
+						"Discount":0.25
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10970,
+					"CustomerId":"BOLID",
+					"EmployeeId":9,
+					"OrderDate":"\/Date(890694000000+0000)\/",
+					"RequiredDate":"\/Date(891900000000+0000)\/",
+					"ShippedDate":"\/Date(893368800000+0000)\/",
+					"ShipVia":1,
+					"Freight":16.16,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10970,
+						"ProductId":52,
+						"UnitPrice":7,
+						"Quantity":40,
+						"Discount":0.2
+					}
+				]
+			}
+		]
+	};
 
-	var currentTax = 0.15;
 	var template   = new Ext.XTemplate(
 	'<h2>Order Overview</h2>',
 	'<tpl for=".">',
@@ -112,60 +137,96 @@ Ext.onReady(function() {
 			'<dt>Shipped Date:</dt>',
 			'<dd>{[this.date(values.Order.ShippedDate)]}</dd>',
 		'</dl>',
+		'<p>',
+			'Shipped via {[this.shippment(values.Order.ShipVia)]} to {[this.shippingAddress(values.Order)]} for {[fm.usMoney(values.Order.Freight)]}',
+		'</p>',
+		'<table>',
+			'<caption>Order items<tpl if="this.isDiscounted(OrderDetails)"> <em>(discounted)</em></tpl></caption>',
+			'<thead>',
+				'<tr>',
+					'<th>No.</th>',
+					'<th>Product</th>',
+					'<th>Unit Price</th>',
+					'<th>Quantity</th>',
+					'<th>Discount</th>',
+					'<th>Sum</th>',
+				'</tr>',
+			'</thead>',
+			'<tbody>',
+				'<tpl for="OrderDetails">',
+					'<tr class="{[xindex % 2 === 0 ? "even" : "odd"]}">',
+						'<td>{#:this.formatNo}.</td>',
+						'<td><a href="detail.php?id={ProductId}">{ProductId}</a></td>',
+						'<td>{UnitPrice:usMoney}</td>',
+						'<td>{Quantity}</td>',
+						'<td>{Discount*100}%</td>',
+						'<td>{[fm.usMoney(this.sum(values, true))]}<tpl if="Discount &gt; 0"><br /><small>{[fm.usMoney(this.sum(values, false))]}</small></tpl></td>',
+					'</tr>',
+				'</tpl>',
+			'</tbody>',
+			'<tfoot>',
+				'<tr>',
+					'<th colspan="5">Total</th>',
+					'<th>{[this.outputOrderSum(values.OrderDetails)]}</th>',
+				'</tr>',
+			'</tfoot>',
+		 '</table>',
 	'</tpl>', {
 		compiled: true,
 		date: function(d) {
 			return Date.parseDate(d, 'M$').format('l, F d, Y');
-		}
-	});
-
-/*	'<dl>',
-		'<dt>Name</dt>',
-		'<dd>{[values.customer.firstName]} {[values.customer.lastName]}</dd>',
-		'<dt>Email</dt>',
-		'<dd><a href="mailto:{ [values.customer.email]}">{[values.customer.email]}</a></dd>',
-	'</dl>',
-	'<table>',
-		'<caption>Order items</caption>',
-		'<tpl for="items">',
-			'<tr <tpl if="this.onlyOne(values)">class="only-one"</tpl>>',
-				'<td>{#:this.formatNo}.</td>',
-				'<td><a href="detail.php?id={id}">{name}</a></td>',
-				'<td>{quantity}</td>',
-				'<td>{[fm.number(this.grossPrice(values.unitPrice), "0.00")]}</td>',
-				'<td>{[fm.number(this.grossItem(values), "0.00")]}</td>',
-			'</tr>',
-		'</tpl>',
-			'<tr>',
-				'<th colspan="4">Total</th>',
-				'<td>{[fm.number(this.orderSum(values), "0.00")]}</td>',
-			'</tr>',
-	 '</table>', {
-		compiled: true,
-		address: function(address) {
-			return address.address + ", " + address.zip + " " + address.city + ", " + address.state;
 		},
-		onlyOne: function(item) {
-			return item.quantity == 1;
+		shippment: function(code) {
+			switch (code) {
+				case 1:
+					return 'air';
+				case 2:
+					return 'train';
+				default:
+					return 'unknown';
+			}
+		},
+		shippingAddress: function(oder) {
+			return oder.ShipName + ", " + oder.ShipAddress + ", " + oder.ShipPostalCode + " " + oder.ShipCity + ", " + oder.ShipCountry;
+		},
+		isDiscounted: function(orderItems) {
+			var isDiscounted	= false;
+			Ext.each(orderItems, function(item) {
+				if (item.Discount > 0) {
+					isDiscounted = true;
+					return false;
+				}
+			}, this);
+			return isDiscounted;
 		},
 		formatNo: function(number) {
 			return String.leftPad(number.toString(), 5, '0');
 		},
-		grossPrice: function(price) {
-			return price * (1 + currentTax);
-		},
-		grossItem: function(item) {
-			return this.grossPrice(item.unitPrice) * item.quantity;
-		},
-		orderSum: function(order) {
-			var sum = 0;
-			Ext.each(order.items, function(item) {
-				sum += this.grossItem(item);
-			}, this);
+		sum: function(item, withDiscount) {
+			var sum = item.UnitPrice * item.Quantity
+			if (withDiscount) {
+				sum	*= (1 - item.Discount);
+			}
 			return sum;
+		},
+		outputOrderSum: function(orderItems) {
+			var sum 		= 0;
+			var discountSum	= 0;
+
+			Ext.each(orderItems, function(item) {
+				sum 		+= this.sum(item, false);
+				discountSum += this.sum(item, true);
+			}, this);
+
+			if (sum == discountSum) {
+				return Ext.util.Format.usMoney(sum);
+			} else {
+				return Ext.util.Format.usMoney(discountSum) + '<br /><small>' + Ext.util.Format.usMoney(sum) + '</small>';
+			}
 		}
-	});*/
-	template.append('content', orderList);
+	});
+
+	template.append('content', order.CustomerOrders);
 });
     	</script>
 	</head>
