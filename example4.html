@@ -186,8 +186,8 @@ Ext.onReady(function() {
 					return 'unknown';
 			}
 		},
-		shippingAddress: function(oder) {
-			return oder.ShipName + ", " + oder.ShipAddress + ", " + oder.ShipPostalCode + " " + oder.ShipCity + ", " + oder.ShipCountry;
+		shippingAddress: function(order) {
+			return order.ShipName + ", " + order.ShipAddress + ", " + order.ShipPostalCode + " " + order.ShipCity + ", " + order.ShipCountry;
 		},
 		isDiscounted: function(orderItems) {
 			var isDiscounted	= false;

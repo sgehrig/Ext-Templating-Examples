@@ -2,106 +2,48 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 8]</title>
+		<title>ExtJS Templating Magic [Example 9]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var order = {
-		number: 4711,
-		date: new Date(2011, 2, 29, 12, 0, 0),
-		status: 'shipped',
-		shippingAddress: {
-			address: '1 Sandy Way',
-		city: 'Tatooine',
-		state: 'Tatooine',
-			zip: '0815'
-		},
-		customer: {
-			firstName: 'Luke',
-			lastName: 'Skywalker',
-			email: 'luke@deathstar.com'
-		},
-		items: [{
-			id: 1,
-			name: 'Light saber',
-			quantity: 5,
-			unitPrice: 100.5
-		}, {
-			id: 2,
-			name: 'C3PO',
-			quantity: 1,
-			unitPrice: 95450.75
-		}]
-	};
-
-	var addressTemplate = new Ext.XTemplate(
-		'<address>{address}, {zip} {city}, <b>{state}</b></address>',
-		{ compiled: true }
-	);
-
-	var currentTax = 0.15;
-	var template   = new Ext.XTemplate(
-	'<h1>Order {number}</h1>',
-	'<h2>{status} on {date:date("Y-m-d")} to {[this. addressTemplate.apply(values.shippingAddress)]}</h2>',
-	'<h3>Customer</h3>',
-	'<dl>',
-		'<dt>Name</dt>',
-		'<dd>{[values.customer.firstName]} {[values.customer.lastName]}</dd>',
-		'<dt>Email</dt>',
-		'<dd><a href="mailto:{ [values.customer.email]}">{[values.customer.email]}</a></dd>',
-	'</dl>',
-	'<table>',
-		'<caption>Order items</caption>',
-		'<tpl for="items">',
-			'<tr <tpl if="this.onlyOne(values)">class="only-one"</tpl>>',
-				'<td>{#:this.formatNo}.</td>',
-				'<td><a href="detail.php?id={id}">{name}</a></td>',
-				'<td>{quantity}</td>',
-				'<td>{[this.grossPrice(values.unitPrice)]}</td>',
-				'<td>{[this.grossItem(values)]}</td>',
-			'</tr>',
-		'</tpl>',
-			'<tr>',
-				'<th colspan="4">Total</th>',
-				'<td>{[this.orderSum(values)]}</td>',
-			'</tr>',
-	 '</table>', {
-		compiled: true,
-		addressTemplate: addressTemplate,
-		onlyOne: function(item) {
-			return item.quantity == 1;
-		},
-		formatNo: function(number) {
-			return String.leftPad(number.toString(), 5, '0');
-		},
-		grossPrice: function(price) {
-			return price * (1 + currentTax);
-		},
-		grossItem: function(item) {
-			return this.grossPrice(item.unitPrice) * item.quantity;
-		},
-		orderSum: function(order) {
-			var sum = 0;
-			Ext.each(order.items, function(item) {
-				sum += this.grossItem(item);
-			}, this);
-			return sum;
-		}
+	var store = new Ext.data.ArrayStore({
+		idIndex: 0,
+		fields: [
+			{ name: 'id', type: 'int', mapping: 0 },
+			{ name: 'login', type: 'string', mapping: 1 },
+			{ name: 'nick', type: 'string', mapping: 2, useNull: true },
+			{ name: 'email', type: 'string', mapping: 3 },
+			{ name: 'gravatar', type: 'string', mapping: 4 }
+		],
+		data: [
+			[1, 'john', 'Johnny', 'john@example.com', 'd4c74594d841139328695756648b6bd6'],
+			[2, 'jack', null, 'jack@example.com', 'ee5770a649fccbde3e448d90591673ca'],
+			[3, 'jane', 'LA69', 'jane@example.com', '9e26471d35a78862c17e467d87cddedf'],
+			[4, 'jim', 'Jimmy', 'jim@example.com', 'db40f846ab0a3b10522f83c6ae657e31']
+		]
 	});
 
-	var panel = new Ext.Panel({
-		title: "Purchase order",
-		tpl: template,
-		data: order
+	var combo = new Ext.form.ComboBox({
+		typeAhead: false,
+		forceSelection: true,
+		editable: false,
+		triggerAction: 'all',
+		mode: 'local',
+		store: store,
+		valueField: 'id',
+		displayField: 'email',
+		listWidth: 300,
+		tpl: '<tpl for="."><div class="x-combo-list-item"><div class="image"><img src="http://www.gravatar.com/avatar/{gravatar}?s=50&d=identicon"/></div><div class="name">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div></div></tpl>'
 	});
-	panel.render(Ext.getBody());
+	combo.render(Ext.getBody());
 });
     	</script>
 	</head>
-	<body id="example8">
-		<h1>ExtJS Templating Magic [Example 8]</h1>
+	<body id="example9">
+		<h1>ExtJS Templating Magic [Example 9]</h1>
 	</body>
 </html>
+
