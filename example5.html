@@ -183,7 +183,7 @@ Ext.onReady(function() {
 	}, orderItemCalculatorMixin));
 
 	var orderItemTableTemplate = new Ext.XTemplate(
-	'<table>',
+	'<table class="order">',
 		'<caption>Order items<tpl if="this.isDiscounted(values)"> <em>(discounted)</em></tpl></caption>',
 		'<thead>',
 			'<tr>',
@@ -246,7 +246,7 @@ Ext.onReady(function() {
 		'<h3>#{[values.Order.Id]}</h3>',
 		'{[this.orderDateBlock(values.Order)]}',
 		'{[this.shippingBlock(values.Order)]}',
-		'{[this.orderItemTableBlock(values.OrderDetails)]}',
+		'{[this.orderItemTable(values.OrderDetails)]}',
 	'</tpl>', {
 		compiled: true,
 		orderDateBlock: function(order) {
@@ -255,7 +255,7 @@ Ext.onReady(function() {
 		shippingBlock: function(order) {
 			return shippingBlockTemplate.apply(order);
 		},
-		orderItemTableBlock: function(orderItems) {
+		orderItemTable: function(orderItems) {
 			return orderItemTableTemplate.apply(orderItems);
 		}
 	});

@@ -2,59 +2,62 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 12]</title>
+		<title>ExtJS Templating Magic [Example 11]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var store = new Ext.data.ArrayStore({
-		idIndex: 0,
-		fields: [
-			{ name: 'id', type: 'int', mapping: 0 },
-			{ name: 'login', type: 'string', mapping: 1 },
-			{ name: 'nick', type: 'string', mapping: 2, useNull: true },
-			{ name: 'email', type: 'string', mapping: 3 },
-			{ name: 'gravatar', type: 'string', mapping: 4 }
-		],
-		data: [
-			[1, 'john', 'Johnny', 'john@example.com', 'd4c74594d841139328695756648b6bd6'],
-			[2, 'jack', null, 'jack@example.com', 'ee5770a649fccbde3e448d90591673ca'],
-			[3, 'jane', 'LA69', 'jane@example.com', '9e26471d35a78862c17e467d87cddedf'],
-			[4, 'jim', 'Jimmy', 'jim@example.com', 'db40f846ab0a3b10522f83c6ae657e31']
-		]
+	var store = new Ext.data.Store({
+		autoLoad: true,
+		proxy: new Ext.data.ScriptTagProxy({
+			url: 'http://api.twitter.com/1/statuses/public_timeline.json?include_entities=true',
+			callbackParam: 'callback'
+		}),
+		reader: new Ext.data.JsonReader({
+			idProperty: 'id',
+			fields: ['id', 'text', 'user', 'source', {name: 'created_at', type: 'date'}]
+		})
 	});
 
 	var grid = new Ext.grid.GridPanel({
 		store: store,
 		autoHeight: true,
-		autoExpandColumn: 'col-email',
+		autoExpandColumn: 'col-text',
 		columns: [{
-			header: 'Gravatar',
+			header: '&nbsp;',
 			xtype: 'templatecolumn',
-			tpl: '<img src="http://www.gravatar.com/avatar/{gravatar}?s=30&d=identicon"/>',
-			width: 80
+			tpl: '<img src="{[values.user.profile_image_url]}"/>',
+			width: 55
 		}, {
-			header: 'Login',
-			dataIndex: 'login',
-			width: 140
-		}, {
-			header: 'Email',
-			dataIndex: 'email',
-			id: 'col-email'
-		}, {
-			header: 'Nickname',
+			header: 'Screen Name',
 			xtype: 'templatecolumn',
-			tpl: '<tpl if="nick">{nick}</tpl><tpl if="!nick"><i>none</i></tpl>',
-			width: 160
+			tpl: '<b>{[values.user.screen_name]}</b>',
+			width: 120
+		}, {
+			header: 'Date',
+			dataIndex: 'created_at',
+			xtype: 'datecolumn',
+			format: 'l, F d, Y g:i:s A',
+			width: 220
+		}, {
+			header: 'Tweet',
+			dataIndex: 'text',
+			id: 'col-text'
+		}, {
+			header: 'Source',
+			dataIndex: 'source',
+			width: 120
 		}]
 	});
-	grid.render(Ext.getBody());
+	grid.render('content');
 });
     	</script>
 	</head>
-	<body id="example12">
-		<h1>ExtJS Templating Magic [Example 12]</h1>
+	<body id="example11">
+		<h1>ExtJS Templating Magic [Example 11]</h1>
+		<div id="content"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

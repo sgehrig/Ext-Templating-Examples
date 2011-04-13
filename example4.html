@@ -140,7 +140,7 @@ Ext.onReady(function() {
 		'<p>',
 			'Shipped via {[this.shippment(values.Order.ShipVia)]} to {[this.shippingAddress(values.Order)]} for {[fm.usMoney(values.Order.Freight)]}',
 		'</p>',
-		'<table>',
+		'<table class="order">',
 			'<caption>Order items<tpl if="this.isDiscounted(OrderDetails)"> <em>(discounted)</em></tpl></caption>',
 			'<thead>',
 				'<tr>',

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 13]</title>
+		<title>ExtJS Templating Magic [Example 12]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -15,7 +15,10 @@ Ext.onReady(function() {
 		getTemplateArgs: function() {
 			return [ this.id, this.cls, 'x-btn-' + this.scale + ' x-btn-icon-' + this.scale + '-' + this.iconAlign, this.url ];
 		},
-		buttonSelector: 'a:first-child'
+		buttonSelector: 'a:first-child',
+		handler: function() {
+			window.location.href = this.url;
+		}
 	});
 
 	var tbButtons	= [
@@ -32,16 +35,23 @@ Ext.onReady(function() {
 			text: String.format('Example {0}', i)
 		}));
 	}
+	tbButtons.push('-');
+	tbButtons.push(new MyUrlButton({
+		url: 'http://www.google.com',
+		text: 'Google'
+	}));
 
 	var toolbar = new Ext.Toolbar({
 		items: tbButtons
 	});
 
-	toolbar.render(Ext.getBody());
+	toolbar.render('content');
 });
     	</script>
 	</head>
-	<body id="example13">
-		<h1>ExtJS Templating Magic [Example 13]</h1>
+	<body id="example12">
+		<h1>ExtJS Templating Magic [Example 12]</h1>
+		<div id="content"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

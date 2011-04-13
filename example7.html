@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 8]</title>
+		<title>ExtJS Templating Magic [Example 7]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -10,98 +10,177 @@
     	<script>
 Ext.onReady(function() {
 	var order = {
-		number: 4711,
-		date: new Date(2011, 2, 29, 12, 0, 0),
-		status: 'shipped',
-		shippingAddress: {
-			address: '1 Sandy Way',
-		city: 'Tatooine',
-		state: 'Tatooine',
-			zip: '0815'
+		"Customer":{
+			"Id":"BOLID",
+			"CompanyName":"Bólido Comidas preparadas",
+			"ContactName":"Martín Sommer",
+			"ContactTitle":"Owner",
+			"Address":"C/ Araquil, 67",
+			"City":"Madrid",
+			"PostalCode":"28023",
+			"Country":"Spain",
+			"Phone":"(91) 555 22 82",
+			"Fax":"(91) 555 91 99"
 		},
-		customer: {
-			firstName: 'Luke',
-			lastName: 'Skywalker',
-			email: 'luke@deathstar.com'
-		},
-		items: [{
-			id: 1,
-			name: 'Light saber',
-			quantity: 5,
-			unitPrice: 100.5
-		}, {
-			id: 2,
-			name: 'C3PO',
-			quantity: 1,
-			unitPrice: 95450.75
-		}]
+		"CustomerOrders":[
+			{
+				"Order":{
+					"Id":10326,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(844898400000+0000)\/",
+					"RequiredDate":"\/Date(847321200000+0000)\/",
+					"ShippedDate":"\/Date(845244000000+0000)\/",
+					"ShipVia":2,
+					"Freight":77.92,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10326,
+						"ProductId":4,
+						"UnitPrice":17.6,
+						"Quantity":24,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":57,
+						"UnitPrice":15.6,
+						"Quantity":16,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":75,
+						"UnitPrice":6.2,
+						"Quantity":50,
+						"Discount":0
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10801,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(883350000000+0000)\/",
+					"RequiredDate":"\/Date(885769200000+0000)\/",
+					"ShippedDate":"\/Date(883522800000+0000)\/",
+					"ShipVia":2,
+					"Freight":97.09,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10801,
+						"ProductId":17,
+						"UnitPrice":39,
+						"Quantity":40,
+						"Discount":0.25
+					},
+					{
+						"OrderId":10801,
+						"ProductId":29,
+						"UnitPrice":123.79,
+						"Quantity":20,
+						"Discount":0.25
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10970,
+					"CustomerId":"BOLID",
+					"EmployeeId":9,
+					"OrderDate":"\/Date(890694000000+0000)\/",
+					"RequiredDate":"\/Date(891900000000+0000)\/",
+					"ShippedDate":"\/Date(893368800000+0000)\/",
+					"ShipVia":1,
+					"Freight":16.16,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10970,
+						"ProductId":52,
+						"UnitPrice":7,
+						"Quantity":40,
+						"Discount":0.2
+					}
+				]
+			}
+		]
 	};
 
-	var addressTemplate = new Ext.XTemplate(
-		'<address>{address}, {zip} {city}, <b>{state}</b></address>',
-		{ compiled: true }
-	);
-
-	var currentTax = 0.15;
-	var template   = new Ext.XTemplate(
-	'<h1>Order {number}</h1>',
-	'<h2>{status} on {date:date("Y-m-d")} to {[this. addressTemplate.apply(values.shippingAddress)]}</h2>',
-	'<h3>Customer</h3>',
-	'<dl>',
-		'<dt>Name</dt>',
-		'<dd>{[values.customer.firstName]} {[values.customer.lastName]}</dd>',
-		'<dt>Email</dt>',
-		'<dd><a href="mailto:{ [values.customer.email]}">{[values.customer.email]}</a></dd>',
-	'</dl>',
-	'<table>',
-		'<caption>Order items</caption>',
-		'<tpl for="items">',
-			'<tr <tpl if="this.onlyOne(values)">class="only-one"</tpl>>',
-				'<td>{#:this.formatNo}.</td>',
-				'<td><a href="detail.php?id={id}">{name}</a></td>',
-				'<td>{quantity}</td>',
-				'<td>{[this.grossPrice(values.unitPrice)]}</td>',
-				'<td>{[this.grossItem(values)]}</td>',
+	var template = new Ext.XTemplate(
+	'<table class="order">',
+		'<thead>',
+			'<tr>',
+				'<th>No.</th>',
+				'<th>Product</th>',
+				'<th>Unit Price</th>',
+				'<th>Quantity</th>',
+			'</tr>',
+		'</thead>',
+		'<tbody>',
+		'<tpl for=".">',
+			'<tr>',
+				'<td>{#}.</td>',
+				'<td>Product ID <b>{ProductId}</b></td>',
+				'<td>{UnitPrice:usMoney}</td>',
+				'<td>{Quantity}</td>',
 			'</tr>',
 		'</tpl>',
-			'<tr>',
-				'<th colspan="4">Total</th>',
-				'<td>{[this.orderSum(values)]}</td>',
-			'</tr>',
-	 '</table>', {
-		compiled: true,
-		addressTemplate: addressTemplate,
-		onlyOne: function(item) {
-			return item.quantity == 1;
-		},
-		formatNo: function(number) {
-			return String.leftPad(number.toString(), 5, '0');
-		},
-		grossPrice: function(price) {
-			return price * (1 + currentTax);
-		},
-		grossItem: function(item) {
-			return this.grossPrice(item.unitPrice) * item.quantity;
-		},
-		orderSum: function(order) {
-			var sum = 0;
-			Ext.each(order.items, function(item) {
-				sum += this.grossItem(item);
-			}, this);
-			return sum;
-		}
+		'</tbody>',
+	 '</table>'
+	);
+
+	var buttons	= [];
+	Ext.each(order.CustomerOrders, function(o) {
+		buttons.push({
+			text: o.Order.Id,
+			order: o,
+			ref: '../orderBtn_'+o.Order.Id,
+			handler: function() {
+				this.refOwner.updatePurchaseOrder(this.order);
+			}
+		});
+		buttons.push('-');
 	});
 
 	var panel = new Ext.Panel({
-		title: "Purchase order",
+		title: 'Purchase order',
 		tpl: template,
-		data: order
+		updatePurchaseOrder: function(o) {
+			this.update(o.OrderDetails);
+			this.setTitle(String.format("Purchase order #{0}", o.Order.Id));
+		},
+		tbar: {
+			xtype: 'toolbar',
+			items: buttons
+		}
 	});
-	panel.render(Ext.getBody());
+	panel.render('content');
+	panel.updatePurchaseOrder(order.CustomerOrders[0]);
 });
     	</script>
 	</head>
-	<body id="example8">
-		<h1>ExtJS Templating Magic [Example 8]</h1>
+	<body id="example7">
+		<h1>ExtJS Templating Magic [Example 7]</h1>
+		<div id="content"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

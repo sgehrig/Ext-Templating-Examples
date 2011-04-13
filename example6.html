@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 7]</title>
+		<title>ExtJS Templating Magic [Example 6]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
@@ -43,11 +43,13 @@ Ext.onReady(function() {
 			return this.apply(items);
 		}
 	});
-	menuTemplate.append(Ext.getBody(), menu);
+	menuTemplate.append('content', menu);
 });
     	</script>
 	</head>
-	<body id="example7">
-		<h1>ExtJS Templating Magic [Example 7]</h1>
+	<body id="example6">
+		<h1>ExtJS Templating Magic [Example 6]</h1>
+		<div id="content"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

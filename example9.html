@@ -2,28 +2,23 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<title>ExtJS Templating Magic [Example 10]</title>
+		<title>ExtJS Templating Magic [Example 9]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
-	var store = new Ext.data.ArrayStore({
-		idIndex: 0,
-		fields: [
-			{ name: 'id', type: 'int', mapping: 0 },
-			{ name: 'login', type: 'string', mapping: 1 },
-			{ name: 'nick', type: 'string', mapping: 2, useNull: true },
-			{ name: 'email', type: 'string', mapping: 3 },
-			{ name: 'gravatar', type: 'string', mapping: 4 }
-		],
-		data: [
-			[1, 'john', 'Johnny', 'john@example.com', 'd4c74594d841139328695756648b6bd6'],
-			[2, 'jack', null, 'jack@example.com', 'ee5770a649fccbde3e448d90591673ca'],
-			[3, 'jane', 'LA69', 'jane@example.com', '9e26471d35a78862c17e467d87cddedf'],
-			[4, 'jim', 'Jimmy', 'jim@example.com', 'db40f846ab0a3b10522f83c6ae657e31']
-		]
+	var store = new Ext.data.Store({
+		autoLoad: true,
+		proxy: new Ext.data.ScriptTagProxy({
+			url: 'http://api.twitter.com/1/statuses/public_timeline.json?include_entities=true',
+			callbackParam: 'callback'
+		}),
+		reader: new Ext.data.JsonReader({
+			idProperty: 'id',
+			fields: ['id', 'text', 'user']
+		})
 	});
 
 	var columns = 3;
@@ -31,8 +26,8 @@ Ext.onReady(function() {
 		'<tpl for=".">',
 		'{[this.groupStart(xindex, \'<div class="group">\')]}',
 			'<div class="item">',
-				'<div class="image"><img src="http://www.gravatar.com/avatar/{gravatar}?s=100&d=identicon"/></div>',
-				'<div class="name">{email} [{login}]<tpl if="nick"> &quot;{nick}&quot;</tpl></div>',
+				'<div class="image"><img src="{[values.user.profile_image_url]}"/></div>',
+				'<div class="name">{[values.user.screen_name]}</div><div class="text">{text}</div>',
 			'</div>',
 		'{[this.groupEnd(xindex, xcount, "</div>")]}',
 		'</tpl>', {
@@ -63,9 +58,10 @@ Ext.onReady(function() {
 });
     	</script>
 	</head>
-	<body id="example10">
-		<h1>ExtJS Templating Magic [Example 10]</h1>
-		<div id="list"></div>
+	<body id="example9">
+		<h1>ExtJS Templating Magic [Example 9]</h1>
 		<div id="status">0 selected</div>
+		<div id="list"></div>
+		<div id="footer"><a href="index.html">back</a></div>
 	</body>
 </html>

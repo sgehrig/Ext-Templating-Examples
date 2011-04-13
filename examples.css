@@ -19,79 +19,113 @@ em, i {
 	font-style: italic;
 }
 
-tr.even {
+.order tr.even {
 	background-color: #888888;
 }
 
-tr.odd {
+.order tr.odd {
 	background-color: #eeeeee;
 }
 
-td, th {
+.order td, .order th {
 	padding: 4px 8px;
 }
 
 /**
  * example10.html
  */
-#example10 .x-combo-list-item {
+#example8 .x-combo-list-item {
 	overflow: hidden;
 }
 
-#example10 .x-combo-list-item .image {
+#example8 .x-combo-list-item .image {
 	float: left;
-	width: 50px;
-	height: 50px;
+	width: 48px;
+	height: 48px;
+	border: 2px solid #dddddd;
 }
 
-#example10 .x-combo-list-item .name {
+#example8 .x-combo-list-item .name,
+#example8 .x-combo-list-item .text {
 	margin-left: 55px;
 	width: 200px;
+}
+
+#example8 .x-combo-list-item .name {
+	font-weight: bold;
+	height: 15px;
+	line-height: 15px;
+}
+
+#example8 .x-combo-list-item .text {
+	font-size: 85%;
+	white-space: normal;
+	height: 35px;
+	overflow: hidden;
+}
+
+/**
+ * example9.html
+ */
+#example9 .group {
+	clear: both;
+	overflow: auto;
+}
+
+#example9 .item {
+	float: left;
+	width: 235px;
+	height: 145px;
+	border: 1px solid black;
+	margin: 10px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+#example9 .item .image {
+	float: left;
+	width: 48px;
+	height: 48px;
+	margin: 5px;
+	border: 2px solid #dddddd;
+}
+
+#example9 .item .name,
+#example9 .item .text {
+	margin-left: 65px;
+	width: 170px;
+}
+
+#example9 .item .name {
+	font-weight: bold;
+}
+
+#example9 .item.item-over {
+	background-color: #eeeeee;
+}
+
+#example9 .item.item-selected {
+	border-color: #ff0000;
+	background-color: #d7797e;
+}
+
+/**
+ * example10.html
+ */
+#example10 .col-tweet {
+	white-space: normal;
 }
 
 /**
  * example11.html
  */
-#example11 .group {
-	clear: both;
-	overflow: auto;
-}
-
-#example11 .item {
-	float: left;
-	width: 145px;
-	height: 145px;
-	border: 1px solid black;
-	margin: 10px;
-	cursor: pointer;
-}
-
-#example11 .item div {
-	text-align: center;
-}
-
-#example11 .item .image img {
-	width: 100px;
-	height: 100px;
-	margin: 2px;
-	border: 5px solid #dddddd;
-}
-
-#example11 .item .name {
-	font-size: 75%;
-}
-
-#example11 .item.item-over {
-	background-color: #eeeeee;
-}
-
-#example11 .item.item-selected {
-	border-color: #ff0000;
+#example11 .x-grid3-col-col-text {
+	white-space: normal;
 }
 
 /**
- * example14.html
+ * example12.html
  */
-#example14 .my-link-btn {
+#example12 .my-link-btn {
 	margin: 5px;
 }
