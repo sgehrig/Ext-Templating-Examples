@@ -10,6 +10,7 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
+	// load the Twitter public timeline
 	var store = new Ext.data.Store({
 		autoLoad: true,
 		proxy: new Ext.data.ScriptTagProxy({
@@ -57,6 +58,18 @@ Ext.onReady(function() {
 		}
 	});
 	dataView.render('list');
+
+	// add a keyboard handler to allow column count switching
+	var map = new Ext.KeyMap(Ext.getBody(), {
+		key: '2345',
+		fn: function(code) {
+			columns	= parseInt(String.fromCharCode(code));
+			var selected	= dataView.getSelectedIndexes();
+			dataView.refresh();
+			dataView.select(selected);
+		},
+		stopEvent: true
+	});
 });
     	</script>
 	</head>
@@ -67,6 +80,7 @@ Ext.onReady(function() {
 			<li><a rel="next" href="#">→</a></li>
 		</ul>
 		<h1><a rel="source" href="#">view source</a>Using data views</h1>
+		<p><b>Press <code>2</code>, <code>3</code>, <code>4</code> or <code>5</code> on your keyboard to change the column count.</b></p>
 		<div id="status">0 selected</div>
 		<div id="list"></div>
 		<div id="footer">

@@ -10,6 +10,7 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
+	// load the Twitter public timeline
 	var store = new Ext.data.Store({
 		proxy: new Ext.data.ScriptTagProxy({
 			url: 'http://api.twitter.com/1/statuses/public_timeline.json?include_entities=true',

@@ -41,6 +41,7 @@ Ext.onReady(function() {
 	'</ul>', {
 		compiled: true,
 		renderMenu: function(items) {
+			// just reapply the current template again
 			return this.apply(items);
 		}
 	});

@@ -126,6 +126,7 @@ Ext.onReady(function() {
 		]
 	};
 
+	// s sub-template to render the relevant order dates
 	var orderDateBlockTemplate = new Ext.XTemplate(
 	'<dl>',
 		'<dt>Order Date:</dt>',
@@ -141,6 +142,7 @@ Ext.onReady(function() {
 		}
 	});
 
+	// a sub-template to render the shipping information
 	var shippingBlockTemplate = new Ext.XTemplate(
 	'<p>',
 		'Shipped via <em>{[this.shippment(values.ShipVia)]}</em> to <address>{ShipName}, {ShipAddress}, {ShipPostalCode} {ShipCity}, {ShipCountry}</address> for {Freight:usMoney}',
@@ -158,6 +160,7 @@ Ext.onReady(function() {
 		}
 	});
 
+	// a mixin that will be used to calculate the sum for an order item
 	var orderItemCalculatorMixin = {
 		sum: function(item, withDiscount) {
 			var sum = item.UnitPrice * item.Quantity
@@ -168,6 +171,7 @@ Ext.onReady(function() {
 		}
 	};
 
+	// a single order item row
 	var orderItemRowTemplate = new Ext.XTemplate(
 	'<tr class="{[values.xindex % 2 === 0 ? "even" : "odd"]}">',
 		'<td>{xindex:this.formatNo}.</td>',
@@ -183,6 +187,7 @@ Ext.onReady(function() {
 		}
 	}, orderItemCalculatorMixin));
 
+	// the whole order item table
 	var orderItemTableTemplate = new Ext.XTemplate(
 	'<table class="order">',
 		'<caption>Order items<tpl if="this.isDiscounted(values)"> <em>(discounted)</em></tpl></caption>',

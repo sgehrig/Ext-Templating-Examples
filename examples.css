@@ -127,7 +127,7 @@ a[rel=source]:hover {
 }
 
 /**
- * example10.html
+ * example8.html
  */
 #example8 .x-combo-list-item {
 	overflow: hidden;
@@ -209,6 +209,19 @@ a[rel=source]:hover {
  */
 #example10 .col-tweet {
 	white-space: normal;
+}
+
+/**
+ * example9.html
+ * example10.html
+ */
+#example9 #status,
+#example10 #status {
+	margin: 10px 5px;
+	padding: 10px;
+	border: 1px solid #888888;
+	width: 300px;
+	text-align: center;
 }
 
 /**

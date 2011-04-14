@@ -149,11 +149,16 @@ Ext.onReady(function() {
 	 '</table>'
 	);
 
+	// add buttons to switch between orders
 	var buttons	= [];
-	Ext.each(order.CustomerOrders, function(o) {
+	Ext.each(order.CustomerOrders, function(o, i) {
 		buttons.push({
 			text: o.Order.Id,
 			order: o,
+			allowDepress: false,
+			enableToggle: true,
+			pressed: (i == 0),
+			toggleGroup: 'order-btn-group',
 			ref: '../orderBtn_'+o.Order.Id,
 			handler: function() {
 				this.refOwner.updatePurchaseOrder(this.order);

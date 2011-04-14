@@ -10,9 +10,11 @@
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
 Ext.onReady(function() {
+	// simple template with array data
 	var template1 = new Ext.Template("<h1>Hello {0}!</h1>");
 	template1.append('content', ['World']);
 
+	// simple template with object data
 	var template2 = new Ext.Template("<h1>{greeting} {name}!</h1>");
 	template2.append('content', {greeting: 'Good morning', name: 'Earth'});
 });

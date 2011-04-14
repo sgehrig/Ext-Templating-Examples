@@ -5,16 +5,16 @@ Ext.onReady(function() {
 	var href	= window.location.href;
 
 	var hrefParts	= href.match(/(index|example(\d+)).html/);
-	
+
 	var prev;
-	if (hrefParts[1] == 'index') {
+	if (!hrefParts || hrefParts[1] == 'index') {
 		prev	= String.format('example{0}', examplesCount);
 	} else {
 		prev	= (parseInt(hrefParts[2]) === 1) ? 'index' : String.format('example{0}', parseInt(hrefParts[2]) - 1);
 	}
 	
 	var next;
-	if (hrefParts[1] == 'index') {
+	if (!hrefParts || hrefParts[1] == 'index') {
 		next	= 'example1';
 	} else {
 		next	= (parseInt(hrefParts[2]) === examplesCount) ? 'index' : String.format('example{0}', parseInt(hrefParts[2]) + 1);

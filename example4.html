@@ -175,6 +175,7 @@ Ext.onReady(function() {
 	'</tpl>', {
 		compiled: true,
 		date: function(d) {
+			// parse the Microsoft-style date format and reformat it into something more readable
 			return Date.parseDate(d, 'M$').format('l, F d, Y');
 		},
 		shippment: function(code) {
