@@ -5,6 +5,7 @@
 		<title>Using data views [Ext JS Templating Magic]</title>
 		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
     	<script src="ext-3.3.1/ext-all.js"></script>
+		<script src="examples.js"></script>
     	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
     	<link rel="stylesheet" type="text/css" href="examples.css" />
     	<script>
@@ -48,6 +49,7 @@ Ext.onReady(function() {
 		selectedClass: 'item-selected',
 		overClass: 'item-over',
 		itemSelector: 'div.item',
+		loadingText: 'loading...',
 		listeners: {
 			selectionchange: function(view, selected) {
 				Ext.get('status').update(String.format('{0} selected', selected.length));
@@ -59,16 +61,16 @@ Ext.onReady(function() {
     	</script>
 	</head>
 	<body id="example9">
-		<h1>Using data views</h1>
+		<ul id="page-nav">
+			<li><a rel="index" href="#">index</a></li>
+			<li><a rel="prev" href="#">←</a></li>
+			<li><a rel="next" href="#">→</a></li>
+		</ul>
+		<h1><a rel="source" href="#">view source</a>Using data views</h1>
 		<div id="status">0 selected</div>
 		<div id="list"></div>
 		<div id="footer">
-			<ul id="page-nav">
-				<li><a href="index.html">index</a></li>
-				<li><a href="example8.html">←</a></li>
-				<li><a href="example10.html">→</a></li>
-			</ul>
-			<div id="copyright">Stefan Gehrig, 2011, to accompany the article "Ext JS templating magic" in <a href="http://jsmag.com">&lt;jsmag&gt;</a> 05/2011</div>
+			Stefan Gehrig, 2011, to accompany the article "Ext JS templating magic" in <a href="http://jsmag.com">&lt;jsmag&gt;</a> 05/2011
 		</div>
 	</body>
 </html>

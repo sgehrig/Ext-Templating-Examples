@@ -8,17 +8,17 @@
  }
 
 h1 {
-	font-size: 125%;
-	margin-bottom: 10px;
+	font-size: 15px;
+	margin-bottom: 20px;
 }
 
 h2 {
-	font-size: 115%;
-	margin-bottom: 5px;
+	font-size: 14px;
+	margin-bottom: 10px;
 }
 
 h3 {
-	font-size: 105%;
+	font-size: 13px;
 	margin-bottom: 5px;
 }
 
@@ -62,20 +62,49 @@ em, i {
 	padding: 4px 8px;
 }
 
+body > h1:first-of-type {
+	overflow: hidden;
+}
+
+a[rel=source] {
+	display: block;
+	float: left;
+	width: 60px;
+	font-size: 9px;
+	padding: 5px;
+	background-color: #000000;
+	border: 1px solid #000000;
+	color: #ffffff;
+	text-align: center;
+	margin-right: 10px;
+}
+
+a[rel=source]:hover {
+	background-color: #ffffff;
+	border-color: #666666;
+	color: #666666;
+	text-align: center;
+	margin-right: 10px;
+	text-decoration: none;
+}
+
 #page-nav {
 	list-style-type: none;
 	margin: 0px;
+	padding: 5px 0px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #000000;
+	overflow: hidden;
 }
 
 #page-nav li {
-	display: inline-block;
-
+	float: left;
 }
 
 #page-nav li a {
 	display: block;
-	padding: 5px;
-	border-right: 1 px solid black;
+	padding: 5px 10px;
+	border-right: 1px solid #000000;
 }
 
 #page-nav li:last-child a {
@@ -86,6 +115,15 @@ em, i {
 	background-color: #000000;
 	color: #ffffff;
 	text-decoration: none;
+}
+
+#footer {
+	border-top: 1px solid #000000;
+	padding: 5px 0px;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 10px;
+	clear: both;
 }
 
 /**
@@ -133,7 +171,7 @@ em, i {
 	float: left;
 	width: 235px;
 	height: 145px;
-	border: 1px solid black;
+	border: 1px solid #000000;
 	margin: 10px;
 	cursor: pointer;
 	overflow: hidden;
@@ -185,4 +223,12 @@ em, i {
  */
 #example12 .my-link-btn {
 	margin: 5px;
+}
+
+#example12 .my-link-btn a {
+	color: #000000;
+}
+
+#example12 .my-link-btn a:hover {
+	color: #0000ff;
 }
