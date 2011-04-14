@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Looping over arrays [Ext JS Templating Magic]</title>
+		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
+    	<script src="ext-3.3.1/ext-all.js"></script>
+    	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
+    	<link rel="stylesheet" type="text/css" href="examples.css" />
+    	<script>
+Ext.onReady(function() {
+	var order = {
+		"Customer":{
+			"Id":"BOLID",
+			"CompanyName":"Bólido Comidas preparadas",
+			"ContactName":"Martín Sommer",
+			"ContactTitle":"Owner",
+			"Address":"C/ Araquil, 67",
+			"City":"Madrid",
+			"PostalCode":"28023",
+			"Country":"Spain",
+			"Phone":"(91) 555 22 82",
+			"Fax":"(91) 555 91 99"
+		},
+		"CustomerOrders":[
+			{
+				"Order":{
+					"Id":10326,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(844898400000+0000)\/",
+					"RequiredDate":"\/Date(847321200000+0000)\/",
+					"ShippedDate":"\/Date(845244000000+0000)\/",
+					"ShipVia":2,
+					"Freight":77.92,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10326,
+						"ProductId":4,
+						"UnitPrice":17.6,
+						"Quantity":24,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":57,
+						"UnitPrice":15.6,
+						"Quantity":16,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":75,
+						"UnitPrice":6.2,
+						"Quantity":50,
+						"Discount":0
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10801,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(883350000000+0000)\/",
+					"RequiredDate":"\/Date(885769200000+0000)\/",
+					"ShippedDate":"\/Date(883522800000+0000)\/",
+					"ShipVia":2,
+					"Freight":97.09,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10801,
+						"ProductId":17,
+						"UnitPrice":39,
+						"Quantity":40,
+						"Discount":0.25
+					},
+					{
+						"OrderId":10801,
+						"ProductId":29,
+						"UnitPrice":123.79,
+						"Quantity":20,
+						"Discount":0.25
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10970,
+					"CustomerId":"BOLID",
+					"EmployeeId":9,
+					"OrderDate":"\/Date(890694000000+0000)\/",
+					"RequiredDate":"\/Date(891900000000+0000)\/",
+					"ShippedDate":"\/Date(893368800000+0000)\/",
+					"ShipVia":1,
+					"Freight":16.16,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10970,
+						"ProductId":52,
+						"UnitPrice":7,
+						"Quantity":40,
+						"Discount":0.2
+					}
+				]
+			}
+		]
+	};
+
+	var template = new Ext.XTemplate(
+	'<table class="order">',
+		'<thead>',
+			'<tr>',
+				'<th>No.</th>',
+				'<th>Product</th>',
+				'<th>Unit Price</th>',
+				'<th>Quantity</th>',
+			'</tr>',
+		'</thead>',
+		'<tbody>',
+		'<tpl for=".">',
+			'<tr>',
+				'<td>{#}.</td>',
+				'<td>Product ID <b>{ProductId}</b></td>',
+				'<td>{UnitPrice:usMoney}</td>',
+				'<td>{Quantity}</td>',
+			'</tr>',
+		'</tpl>',
+		'</tbody>',
+	 '</table>'
+	);
+
+	template.append('content', order.CustomerOrders[0].OrderDetails);
+});
+    	</script>
+	</head>
+	<body id="example2">
+		<h1>Looping over arrays</h1>
+		<div id="content"></div>
+		<div id="footer">
+			<ul id="page-nav">
+				<li><a href="index.html">index</a></li>
+				<li><a href="example1.html">←</a></li>
+				<li><a href="example3.html">→</a></li>
+			</ul>
+			<div id="copyright">Stefan Gehrig, 2011, to accompany the article "Ext JS templating magic" in <a href="http://jsmag.com">&lt;jsmag&gt;</a> 05/2011</div>
+		</div>
+	</body>
+</html>

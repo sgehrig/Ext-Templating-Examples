@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Styling Comboboxes [Ext JS Templating Magic]</title>
+		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
+    	<script src="ext-3.3.1/ext-all.js"></script>
+    	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
+    	<link rel="stylesheet" type="text/css" href="examples.css" />
+    	<script>
+Ext.onReady(function() {
+	var store = new Ext.data.Store({
+		proxy: new Ext.data.ScriptTagProxy({
+			url: 'http://api.twitter.com/1/statuses/public_timeline.json?include_entities=true',
+			callbackParam: 'callback'
+		}),
+		reader: new Ext.data.JsonReader({
+			idProperty: 'id',
+			fields: ['id', 'text', 'user']
+		})
+	});
+
+	var combo = new Ext.form.ComboBox({
+		typeAhead: false,
+		forceSelection: true,
+		editable: false,
+		triggerAction: 'all',
+		mode: 'remote',
+		store: store,
+		valueField: 'id',
+		displayField: 'id',
+		listWidth: 300,
+		tpl: '<tpl for="."><div class="x-combo-list-item"><div class="image"><img src="{[values.user.profile_image_url]}"/></div><div class="name">{[values.user.screen_name]}</div><div class="text">{text:ellipsis(90, true)}</div></div></tpl>'
+	});
+	combo.render('content');
+});
+    	</script>
+	</head>
+	<body id="example8">
+		<h1>Styling Comboboxes</h1>
+		<div id="content"></div>
+		<div id="footer">
+			<ul id="page-nav">
+				<li><a href="index.html">index</a></li>
+				<li><a href="example7.html">←</a></li>
+				<li><a href="example9.html">→</a></li>
+			</ul>
+			<div id="copyright">Stefan Gehrig, 2011, to accompany the article "Ext JS templating magic" in <a href="http://jsmag.com">&lt;jsmag&gt;</a> 05/2011</div>
+		</div>
+	</body>
+</html>
+

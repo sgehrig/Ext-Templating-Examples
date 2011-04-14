@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Templates and hierarchical data [Ext JS Templating Magic]</title>
+		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
+    	<script src="ext-3.3.1/ext-all.js"></script>
+    	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
+    	<link rel="stylesheet" type="text/css" href="examples.css" />
+    	<script>
+Ext.onReady(function() {
+	var menu = [
+		{ id: 'home', name: 'Home' },
+		{ id: 'news', name: 'News' },
+		{ id: 'products', name: 'Products', children: [
+			{ id: 'products.apple', name: 'Apple', children: [
+				{ id: 'products.apple.iphone', name: 'iPhone' },
+				{ id: 'products.apple.ipad', name: 'iPad' },
+				{ id: 'products.apple.imac', name: 'iMac' },
+				{ id: 'products.apple.macbook', name: 'MacBook' }
+		]},
+			{ id: 'products.hp', name: 'HP' },
+			{ id: 'products.dell', name: 'Dell' }
+		]},
+		{ id: 'contact', name: 'Contact', children: [
+			{ id: 'contact.mail', name: 'Mail' },
+			{ id: 'contcat.phone', name: 'Phone' }
+		]}
+	];
+
+	var menuTemplate = new Ext.XTemplate(
+	'<ul>',
+	'<tpl for=".">',
+		'<li><a href="/{id}">{name}</a>',
+		'<tpl if="values.children && values.children.length &gt; 0">',
+			'{[this.renderMenu(values.children)]}',
+		'</tpl>',
+		'</li>',
+	'</tpl>',
+	'</ul>', {
+		compiled: true,
+		renderMenu: function(items) {
+			return this.apply(items);
+		}
+	});
+	menuTemplate.append('content', menu);
+});
+    	</script>
+	</head>
+	<body id="example6">
+		<h1>Templates and hierarchical data</h1>
+		<div id="content"></div>
+		<div id="footer">
+			<ul id="page-nav">
+				<li><a href="index.html">index</a></li>
+				<li><a href="example5.html">←</a></li>
+				<li><a href="example7.html">→</a></li>
+			</ul>
+			<div id="copyright">Stefan Gehrig, 2011, to accompany the article "Ext JS templating magic" in <a href="http://jsmag.com">&lt;jsmag&gt;</a> 05/2011</div>
+		</div>
+	</body>
+</html>

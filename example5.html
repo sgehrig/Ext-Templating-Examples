@@ -1,0 +1,279 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Sub-templates [Ext JS]</title>
+		<script src="ext-3.3.1/adapter/ext/ext-base.js"></script>
+    	<script src="ext-3.3.1/ext-all.js"></script>
+    	<link rel="stylesheet" type="text/css" href="ext-3.3.1/resources/css/ext-all.css" />
+    	<link rel="stylesheet" type="text/css" href="examples.css" />
+    	<script>
+Ext.onReady(function() {
+	var order = {
+		"Customer":{
+			"Id":"BOLID",
+			"CompanyName":"Bólido Comidas preparadas",
+			"ContactName":"Martín Sommer",
+			"ContactTitle":"Owner",
+			"Address":"C/ Araquil, 67",
+			"City":"Madrid",
+			"PostalCode":"28023",
+			"Country":"Spain",
+			"Phone":"(91) 555 22 82",
+			"Fax":"(91) 555 91 99"
+		},
+		"CustomerOrders":[
+			{
+				"Order":{
+					"Id":10326,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(844898400000+0000)\/",
+					"RequiredDate":"\/Date(847321200000+0000)\/",
+					"ShippedDate":"\/Date(845244000000+0000)\/",
+					"ShipVia":2,
+					"Freight":77.92,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10326,
+						"ProductId":4,
+						"UnitPrice":17.6,
+						"Quantity":24,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":57,
+						"UnitPrice":15.6,
+						"Quantity":16,
+						"Discount":0
+					},
+					{
+						"OrderId":10326,
+						"ProductId":75,
+						"UnitPrice":6.2,
+						"Quantity":50,
+						"Discount":0
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10801,
+					"CustomerId":"BOLID",
+					"EmployeeId":4,
+					"OrderDate":"\/Date(883350000000+0000)\/",
+					"RequiredDate":"\/Date(885769200000+0000)\/",
+					"ShippedDate":"\/Date(883522800000+0000)\/",
+					"ShipVia":2,
+					"Freight":97.09,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10801,
+						"ProductId":17,
+						"UnitPrice":39,
+						"Quantity":40,
+						"Discount":0.25
+					},
+					{
+						"OrderId":10801,
+						"ProductId":29,
+						"UnitPrice":123.79,
+						"Quantity":20,
+						"Discount":0.25
+					}
+				]
+			},
+			{
+				"Order":{
+					"Id":10970,
+					"CustomerId":"BOLID",
+					"EmployeeId":9,
+					"OrderDate":"\/Date(890694000000+0000)\/",
+					"RequiredDate":"\/Date(891900000000+0000)\/",
+					"ShippedDate":"\/Date(893368800000+0000)\/",
+					"ShipVia":1,
+					"Freight":16.16,
+					"ShipName":"Bólido Comidas preparadas",
+					"ShipAddress":"C/ Araquil, 67",
+					"ShipCity":"Madrid",
+					"ShipPostalCode":"28023",
+					"ShipCountry":"Spain"
+				},
+				"OrderDetails":[
+					{
+						"OrderId":10970,
+						"ProductId":52,
+						"UnitPrice":7,
+						"Quantity":40,
+						"Discount":0.2
+					}
+				]
+			}
+		]
+	};
+
+	var orderDateBlockTemplate = new Ext.XTemplate(
+	'<dl>',
+		'<dt>Order Date:</dt>',
+		'<dd>{OrderDate:this.date}</dd>',
+		'<dt>Required Date:</dt>',
+		'<dd>{RequiredDate:this.date}</dd>',
+		'<dt>Shipped Date:</dt>',
+		'<dd>{ShippedDate:this.date}</dd>',
+	'</dl>', {
+		compiled: true,
+		date: function(d) {
+			return Date.parseDate(d, 'M$').format('l, F d, Y');
+		}
+	});
+
+	var shippingBlockTemplate = new Ext.XTemplate(
+	'<p>',
+		'Shipped via <em>{[this.shippment(values.ShipVia)]}</em> to <address>{ShipName}, {ShipAddress}, {ShipPostalCode} {ShipCity}, {ShipCountry}</address> for {Freight:usMoney}',
+	'</p>', {
+		compiled: true,
+		shippment: function(code) {
+			switch (code) {
+				case 1:
+					return 'air';
+				case 2:
+					return 'train';
+				default:
+					return 'unknown';
+			}
+		}
+	});
+
+	var orderItemCalculatorMixin = {
+		sum: function(item, withDiscount) {
+			var sum = item.UnitPrice * item.Quantity
+			if (withDiscount) {
+				sum	*= (1 - item.Discount);
+			}
+			return sum;
+		}
+	};
+
+	var orderItemRowTemplate = new Ext.XTemplate(
+	'<tr class="{[values.xindex % 2 === 0 ? "even" : "odd"]}">',
+		'<td>{xindex:this.formatNo}.</td>',
+		'<td><a href="detail.php?id={ProductId}">{ProductId}</a></td>',
+		'<td>{UnitPrice:usMoney}</td>',
+		'<td>{Quantity}</td>',
+		'<td>{Discount*100}%</td>',
+		'<td>{[fm.usMoney(this.sum(values, true))]}<tpl if="Discount &gt; 0"><br /><small>{[fm.usMoney(this.sum(values, false))]}</small></tpl></td>',
+	'</tr>', Ext.apply({}, {
+		compiled: true,
+		formatNo: function(number) {
+			return String.leftPad(number.toString(), 5, '0');
+		}
+	}, orderItemCalculatorMixin));
+
+	var orderItemTableTemplate = new Ext.XTemplate(
+	'<table class="order">',
+		'<caption>Order items<tpl if="this.isDiscounted(values)"> <em>(discounted)</em></tpl></caption>',
+		'<thead>',
+			'<tr>',
+				'<th>No.</th>',
+				'<th>Product</th>',
+				'<th>Unit Price</th>',
+				'<th>Quantity</th>',
+				'<th>Discount</th>',
+				'<th>Sum</th>',
+			'</tr>',
+		'</thead>',
+		'<tbody>',
+			'<tpl for=".">',
+				'{[this.orderItemRow(xindex, values)]}',
+			'</tpl>',
+		'</tbody>',
+		'<tfoot>',
+			'<tr>',
+				'<th colspan="5">Total</th>',
+				'<th>{[this.outputOrderSum(values)]}</th>',
+			'</tr>',
+		'</tfoot>',
+	 '</table>', Ext.apply({}, {
+		compiled: true,
+		orderItemRow: function(xindex, orderItem) {
+			return orderItemRowTemplate.apply(Ext.apply({}, orderItem, {
+				xindex: xindex
+			}));
+		},
+		isDiscounted: function(orderItems) {
+			var isDiscounted	= false;
+			Ext.each(orderItems, function(item) {
+				if (item.Discount > 0) {
+					isDiscounted = true;
+					return false;
+				}
+			}, this);
+			return isDiscounted;
+		},
+		outputOrderSum: function(orderItems) {
+			var sum 		= 0;
+			var discountSum	= 0;
+
+			Ext.each(orderItems, function(item) {
+				sum 		+= this.sum(item, false);
+				discountSum += this.sum(item, true);
+			}, this);
+
+			if (sum == discountSum) {
+				return Ext.util.Format.usMoney(sum);
+			} else {
+				return Ext.util.Format.usMoney(discountSum) + '<br /><small>' + Ext.util.Format.usMoney(sum) + '</small>';
+			}
+		}
+	}, orderItemCalculatorMixin));
+
+	var template   = new Ext.XTemplate(
+	'<h2>Order Overview</h2>',
+	'<tpl for=".">',
+		'<h3>#{[values.Order.Id]}</h3>',
+		'{[this.orderDateBlock(values.Order)]}',
+		'{[this.shippingBlock(values.Order)]}',
+		'{[this.orderItemTable(values.OrderDetails)]}',
+	'</tpl>', {
+		compiled: true,
+		orderDateBlock: function(order) {
+			return orderDateBlockTemplate.apply(order);
+		},
+		shippingBlock: function(order) {
+			return shippingBlockTemplate.apply(order);
+		},
+		orderItemTable: function(orderItems) {
+			return orderItemTableTemplate.apply(orderItems);
+		}
+	});
+
+	template.append('content', order.CustomerOrders);
+});
+    	</script>
+	</head>
+	<body id="example5">
+		<h1>Sub-templates</h1>
+		<div id="content"></div>
+		<div id="footer">
+			<ul id="page-nav">
+				<li><a href="index.html">index</a></li>
+				<li><a href="example4.html">←</a></li>
+				<li><a href="example6.html">→</a></li>
+			</ul>
+			<div id="copyright">Stefan Gehrig, 2011, to accompany the article "Ext JS templating magic" in <a href="http://jsmag.com">&lt;jsmag&gt;</a> 05/2011</div>
+		</div>
+	</body>
+</html>

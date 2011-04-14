@@ -1,0 +1,188 @@
+/**
+ * general styles - mostly to reset ExtJS all.css resets
+ */
+ body {
+ 	font-family: tahoma,arial,verdana,sans-serif;
+    font-size: 12px;
+    padding: 10px;
+ }
+
+h1 {
+	font-size: 125%;
+	margin-bottom: 10px;
+}
+
+h2 {
+	font-size: 115%;
+	margin-bottom: 5px;
+}
+
+h3 {
+	font-size: 105%;
+	margin-bottom: 5px;
+}
+
+a {
+	color: #666666;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #bbbbbb;
+	text-decoration: underline;
+}
+
+ol {
+	list-style-type: decimal;
+	margin: 0px 0px 0px 35px;
+}
+
+ul {
+	list-style-type: disc;
+	margin: 0px 0px 0px 35px;
+}
+
+strong, b {
+	font-weight: bold;
+}
+
+em, i {
+	font-style: italic;
+}
+
+.order tr.even {
+	background-color: #888888;
+}
+
+.order tr.odd {
+	background-color: #eeeeee;
+}
+
+.order td, .order th {
+	padding: 4px 8px;
+}
+
+#page-nav {
+	list-style-type: none;
+	margin: 0px;
+}
+
+#page-nav li {
+	display: inline-block;
+
+}
+
+#page-nav li a {
+	display: block;
+	padding: 5px;
+	border-right: 1 px solid black;
+}
+
+#page-nav li:last-child a {
+	border-right-color: transparent;
+}
+
+#page-nav li a:hover {
+	background-color: #000000;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+/**
+ * example10.html
+ */
+#example8 .x-combo-list-item {
+	overflow: hidden;
+}
+
+#example8 .x-combo-list-item .image {
+	float: left;
+	width: 48px;
+	height: 48px;
+	border: 2px solid #dddddd;
+}
+
+#example8 .x-combo-list-item .name,
+#example8 .x-combo-list-item .text {
+	margin-left: 55px;
+	width: 200px;
+}
+
+#example8 .x-combo-list-item .name {
+	font-weight: bold;
+	height: 15px;
+	line-height: 15px;
+}
+
+#example8 .x-combo-list-item .text {
+	font-size: 85%;
+	white-space: normal;
+	height: 35px;
+	overflow: hidden;
+}
+
+/**
+ * example9.html
+ */
+#example9 .group {
+	clear: both;
+	overflow: auto;
+}
+
+#example9 .item {
+	float: left;
+	width: 235px;
+	height: 145px;
+	border: 1px solid black;
+	margin: 10px;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+#example9 .item .image {
+	float: left;
+	width: 48px;
+	height: 48px;
+	margin: 5px;
+	border: 2px solid #dddddd;
+}
+
+#example9 .item .name,
+#example9 .item .text {
+	margin-left: 65px;
+	width: 170px;
+}
+
+#example9 .item .name {
+	font-weight: bold;
+}
+
+#example9 .item.item-over {
+	background-color: #eeeeee;
+}
+
+#example9 .item.item-selected {
+	border-color: #ff0000;
+	background-color: #d7797e;
+}
+
+/**
+ * example10.html
+ */
+#example10 .col-tweet {
+	white-space: normal;
+}
+
+/**
+ * example11.html
+ */
+#example11 .x-grid3-col-col-text {
+	white-space: normal;
+}
+
+/**
+ * example12.html
+ */
+#example12 .my-link-btn {
+	margin: 5px;
+}
