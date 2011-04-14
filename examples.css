@@ -1,6 +1,37 @@
 /**
  * general styles - mostly to reset ExtJS all.css resets
  */
+ body {
+ 	font-family: tahoma,arial,verdana,sans-serif;
+    font-size: 12px;
+    padding: 10px;
+ }
+
+h1 {
+	font-size: 125%;
+	margin-bottom: 10px;
+}
+
+h2 {
+	font-size: 115%;
+	margin-bottom: 5px;
+}
+
+h3 {
+	font-size: 105%;
+	margin-bottom: 5px;
+}
+
+a {
+	color: #666666;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #bbbbbb;
+	text-decoration: underline;
+}
+
 ol {
 	list-style-type: decimal;
 	margin: 0px 0px 0px 35px;
@@ -29,6 +60,32 @@ em, i {
 
 .order td, .order th {
 	padding: 4px 8px;
+}
+
+#page-nav {
+	list-style-type: none;
+	margin: 0px;
+}
+
+#page-nav li {
+	display: inline-block;
+
+}
+
+#page-nav li a {
+	display: block;
+	padding: 5px;
+	border-right: 1 px solid black;
+}
+
+#page-nav li:last-child a {
+	border-right-color: transparent;
+}
+
+#page-nav li a:hover {
+	background-color: #000000;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 /**
