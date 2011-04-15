@@ -67,7 +67,7 @@ body > h1:first-of-type {
 }
 
 a[rel=source] {
-	display: block;
+	display: none;
 	float: left;
 	width: 60px;
 	font-size: 9px;
@@ -77,6 +77,11 @@ a[rel=source] {
 	color: #ffffff;
 	text-align: center;
 	margin-right: 10px;
+}
+
+.ext-gecko a[rel=source],
+.ext-chrome a[rel=source] {
+	display: block;
 }
 
 a[rel=source]:hover {
