@@ -18,6 +18,29 @@ Ext.onReady(function() {
 		rootSelectorData.push([k, k]);
 	});
 
+	var keydownHandler	= function(f, e) {
+		if (e.getKey() == Ext.EventObject.TAB) {
+			e.preventDefault();
+			var field 	= f.getEl().dom;
+			var insert	= '    ';
+			if (document.selection) {
+				field.focus();
+				var sel = document.selection.createRange();
+				sel.text = insert;
+				sel.select();
+			} else if (field.selectionStart || field.selectionStart == '0') {
+				var start = field.selectionStart;
+				var end = field.selectionEnd;
+				var scroll = field.scrollTop;
+				field.value = field.value.substring(0, start) + insert + field.value.substring(end, field.value.length);
+				field.focus();
+				field.selectionStart = start + insert.length;
+				field.selectionEnd = start + insert.length;
+				field.scrollTop = scroll;
+			}
+		}
+	};
+
 	var form	= new Ext.form.FormPanel({
 		defaults: {
 			anchor: '-10'
@@ -50,17 +73,21 @@ Ext.onReady(function() {
 			ref: 'template',
 			value: [
 '<table>',
-'	<tpl for="CustomerOrders">',
-'		<tpl for="OrderDetails">',
-'			<tr class="{[xindex % 2 === 0 ? "even" : "odd"]}">',
-'				<td>{#:this.formatNo}.</td>',
-'				<td>Product ID <b>{ProductId}</b></td>',
-'				<td>{UnitPrice:usMoney}</td>',
-'				<td>{Quantity}</td>',
-'			</tr>',
-'		</tpl>',
-'	</tpl>',
-'</table>'].join('\n')
+'    <tpl for="CustomerOrders">',
+'        <tpl for="OrderDetails">',
+'            <tr class="{[xindex % 2 === 0 ? "even" : "odd"]}">',
+'                <td>{#:this.formatNo}.</td>',
+'                <td>Product ID <b>{ProductId}</b></td>',
+'                <td>{UnitPrice:usMoney}</td>',
+'                <td>{Quantity}</td>',
+'            </tr>',
+'        </tpl>',
+'    </tpl>',
+'</table>'].join('\n'),
+			enableKeyEvents: true,
+			listeners: {
+				keydown: keydownHandler
+			}
 		}, {
 			xtype: 'textarea',
 			fieldLabel: 'Configuration Object',
@@ -69,11 +96,15 @@ Ext.onReady(function() {
 			ref: 'config',
 			value: [
 '{',
-'	compiled: true,',
-'	formatNo: function(number) {',
-'		return String.leftPad(number.toString(), 5, \'0\');',
-'	}',
-'}'].join('\n')
+'    compiled: true,',
+'    formatNo: function(number) {',
+'        return String.leftPad(number.toString(), 5, \'0\');',
+'    }',
+'}'].join('\n'),
+			enableKeyEvents: true,
+			listeners: {
+				keydown: keydownHandler
+			}
 		}, {
 			xtype: 'fieldset',
 			title: 'Data',
