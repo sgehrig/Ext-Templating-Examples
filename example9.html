@@ -60,7 +60,7 @@ Ext.onReady(function() {
 	dataView.render('list');
 
 	// add a keyboard handler to allow column count switching
-	var map = new Ext.KeyMap(Ext.getBody(), {
+	var map = new Ext.KeyMap(Ext.getDoc(), {
 		key: '2345',
 		fn: function(code) {
 			columns	= parseInt(String.fromCharCode(code));
