@@ -126,6 +126,10 @@ a[rel=source]:hover {
 	clear: both;
 }
 
+textarea.code-input {
+	font-family: monospace;
+}
+
 /**
  * example8.html
  */

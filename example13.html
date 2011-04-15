@@ -44,7 +44,8 @@ Ext.onReady(function() {
 			ref: 'root'
 		}, {
 			xtype: 'textarea',
-			fieldLabel: 'Template',
+			fieldLabel: 'Template String',
+			cls: 'code-input',
 			height: 150,
 			ref: 'template',
 			value: [
@@ -60,6 +61,12 @@ Ext.onReady(function() {
 '		</tpl>',
 '	</tpl>',
 '</table>'].join('\n')
+		}, {
+			xtype: 'textarea',
+			fieldLabel: 'Configuration Object',
+			cls: 'code-input',
+			height: 150,
+			ref: 'config'
 		}, {
 			xtype: 'fieldset',
 			title: 'Data',
@@ -82,7 +89,15 @@ Ext.onReady(function() {
 				} else {
 					tplArg = data;
 				}
-				var tpl = new Ext.XTemplate(form.template.getValue());
+
+				var tplString       = form.template.getValue();
+				var tplConfigString = form.config.getValue();
+				var tplConfig    = {};
+				if (!Ext.isEmpty(tplConfigString) /*&& /^{.+}$/.test(tplConfigString)*/) {
+					eval('tplConfig = '+tplConfigString+';');
+				}
+
+				var tpl = new Ext.XTemplate(tplString, tplConfig);
 				tpl.overwrite('rendered', tplArg);
 			}
 		}]
