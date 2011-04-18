@@ -145,10 +145,10 @@ Ext.onReady(function() {
 	// a sub-template to render the shipping information
 	var shippingBlockTemplate = new Ext.XTemplate(
 	'<p>',
-		'Shipped via <em>{[this.shippment(values.ShipVia)]}</em> to <address>{ShipName}, {ShipAddress}, {ShipPostalCode} {ShipCity}, {ShipCountry}</address> for {Freight:usMoney}',
+		'Shipped via <em>{[this.shipment(values.ShipVia)]}</em> to <address>{ShipName}, {ShipAddress}, {ShipPostalCode} {ShipCity}, {ShipCountry}</address> for {Freight:usMoney}',
 	'</p>', {
 		compiled: true,
-		shippment: function(code) {
+		shipment: function(code) {
 			switch (code) {
 				case 1:
 					return 'air';
